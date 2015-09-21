@@ -21,7 +21,9 @@
 /**
  * Footer page to close all of the HTML code
  */
-?><script src="//storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+?></main>
+</div>
+<script src="//storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/js/jquery.animsition.min.js"></script>
 <script>new WOW().init();</script>
