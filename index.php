@@ -38,4 +38,10 @@ if (!file_exists('./config.php')) {
 
 // Getting any settings from the config file
 require('./config.php');
+
+// Load the HTML head section, as this is needed for all users
+require('./header.php');
+
+// Load the footer section, as this is needed for all users
+require('./footer.php');
 ?>
