@@ -28,7 +28,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-red.min.css" />
+		<link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-indigo.min.css" />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/css/animsition.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
