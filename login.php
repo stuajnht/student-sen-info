@@ -31,7 +31,7 @@ defined('RUNNING_FROM') || die('<h2>You cannot access this page directly.</h2>')
 
 ?><div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 login-cell">
 		<h3>
 			Login
 		</h3>
