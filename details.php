@@ -17,7 +17,6 @@
  *
  * @author Jonathan Hart
  */
-
 /*
  * The individual student details template page, which is filled in via AJAX
  *
@@ -26,33 +25,73 @@
  */
 ?><div class="mdl-grid">
 	<!-- Student Details -->
-	<div class="mdl-cell mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-		<h4>
-			Student Name
-		</h4>
-		Student details.
+	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Student Name</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Student details.
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">edit</i>
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+				<i class="material-icons">delete</i>
+			</button>
+		</div>
 	</div>
 </div>
 <div class="mdl-grid">
 	<!-- SEN Infomation -->
-	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-		<h4>
-			SEN Info
-		</h4>
-		Student details.
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
+			<h2 class="mdl-card__title-text">SEN Info</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Student details.
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">add</i>
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+				<i class="material-icons">delete</i>
+			</button>
+		</div>
 	</div>
 	<!-- Key Worker -->
-	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-		<h4>
-			Key Worker
-		</h4>
-		Student details.
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Key Worker</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Student details.
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">add</i>
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+				<i class="material-icons">delete</i>
+			</button>
+		</div>
 	</div>
 	<!-- Pastoral -->
-	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-		<h4>
-			Pastoral
-		</h4>
-		Student details.
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Pastoral</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Student details.
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">add</i>
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+				<i class="material-icons">delete</i>
+			</button>
+		</div>
 	</div>
 </div>
