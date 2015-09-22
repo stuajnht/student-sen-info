@@ -34,3 +34,16 @@
 .login-cell {
 	padding: 16px 32px;
 }
+
+/* Details Page Information Card Colours */
+.colour--purple-200 {
+	background-color: #ce93d8;
+}
+
+.colour--light-green-200 {
+	background-color: #c5e1a5;
+}
+
+.color--orange-200 {
+	background-color: #ffcc80;
+}
