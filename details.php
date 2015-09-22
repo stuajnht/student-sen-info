@@ -28,17 +28,17 @@
 	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
 			<h2 class="mdl-card__title-text">Student Name</h2>
+			<div class="mdl-layout-spacer"></div>
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-student-details">
+				<i class="material-icons">more_vert</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-student-details">
+				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+			</ul>
 		</div>
 		<div class="mdl-card__supporting-text">
 			Student details.
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-				<i class="material-icons">edit</i>
-			</button>
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
-				<i class="material-icons">delete</i>
-			</button>
 		</div>
 	</div>
 </div>
@@ -47,51 +47,63 @@
 	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
 			<h2 class="mdl-card__title-text">SEN Info</h2>
+			<div class="mdl-layout-spacer"></div>
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-sen-info">
+				<i class="material-icons">more_vert</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
+				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+			</ul>
 		</div>
 		<div class="mdl-card__supporting-text">
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-				<i class="material-icons">add</i>
-			</button>
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
-				<i class="material-icons">delete</i>
-			</button>
+				<i class="material-icons">add</i>
 		</div>
 	</div>
 	<!-- Key Worker -->
 	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
 			<h2 class="mdl-card__title-text">Key Worker</h2>
+			<div class="mdl-layout-spacer"></div>
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-key-worker">
+				<i class="material-icons">more_vert</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-key-worker">
+				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+			</ul>
 		</div>
 		<div class="mdl-card__supporting-text">
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-				<i class="material-icons">add</i>
-			</button>
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
-				<i class="material-icons">delete</i>
-			</button>
+				<i class="material-icons">add</i>
 		</div>
 	</div>
 	<!-- Pastoral -->
 	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
 			<h2 class="mdl-card__title-text">Pastoral</h2>
+			<div class="mdl-layout-spacer"></div>
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-pastoral">
+				<i class="material-icons">more_vert</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-pastoral">
+				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+			</ul>
 		</div>
 		<div class="mdl-card__supporting-text">
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-				<i class="material-icons">add</i>
-			</button>
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
-				<i class="material-icons">delete</i>
-			</button>
+				<i class="material-icons">add</i>
 		</div>
 	</div>
 </div>
