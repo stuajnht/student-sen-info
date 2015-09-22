@@ -60,7 +60,7 @@
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--purple-400">
 				<i class="material-icons">add</i>
 		</div>
 	</div>
@@ -81,13 +81,13 @@
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--light-green-400">
 				<i class="material-icons">add</i>
 		</div>
 	</div>
 	<!-- Pastoral -->
 	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
-		<div class="mdl-card__title mdl-color-text--grey-800 color--orange-200">
+		<div class="mdl-card__title mdl-color-text--grey-800 colour--orange-200">
 			<h2 class="mdl-card__title-text">Pastoral</h2>
 			<div class="mdl-layout-spacer"></div>
 			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-pastoral">
@@ -102,7 +102,7 @@
 			Student details.
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored pull-right">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--orange-400">
 				<i class="material-icons">add</i>
 		</div>
 	</div>

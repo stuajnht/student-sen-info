@@ -39,11 +39,21 @@
 .colour--purple-200 {
 	background-color: #ce93d8;
 }
+.colour--purple-400 {
+	background-color: #ab47bc;
+	color: #fff;
+}
 
 .colour--light-green-200 {
 	background-color: #c5e1a5;
 }
+.colour--light-green-400 {
+	background-color: #9ccc65;
+}
 
-.color--orange-200 {
+.colour--orange-200 {
 	background-color: #ffcc80;
+}
+.colour--orange-400 {
+	background-color: #ffa726;
 }
