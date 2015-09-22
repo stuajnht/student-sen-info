@@ -43,6 +43,10 @@
 	background-color: #ab47bc;
 	color: #fff;
 }
+.colour--purple-400:hover {
+	background-color: #8e24aa;
+	color: #fff;
+}
 
 .colour--light-green-200 {
 	background-color: #c5e1a5;
@@ -50,10 +54,16 @@
 .colour--light-green-400 {
 	background-color: #9ccc65;
 }
+.colour--light-green-400:hover {
+	background-color: #7cb342;
+}
 
 .colour--orange-200 {
 	background-color: #ffcc80;
 }
 .colour--orange-400 {
 	background-color: #ffa726;
+}
+.colour--orange-400:hover {
+	background-color: #fb8c00;
 }
