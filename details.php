@@ -56,8 +56,33 @@
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
 		</div>
-		<div class="mdl-card__supporting-text">
-			Student details.
+		<div class="mdl-card__supporting-text supporting-text-table-container">
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
+				<thead>
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Staff</th>
+						<th class="mdl-data-table__cell--non-numeric">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--purple-400">
@@ -77,8 +102,33 @@
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
 		</div>
-		<div class="mdl-card__supporting-text">
-			Student details.
+		<div class="mdl-card__supporting-text supporting-text-table-container">
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
+				<thead>
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Staff</th>
+						<th class="mdl-data-table__cell--non-numeric">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--light-green-400">
@@ -98,8 +148,33 @@
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
 		</div>
-		<div class="mdl-card__supporting-text">
-			Student details.
+		<div class="mdl-card__supporting-text supporting-text-table-container">
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
+				<thead>
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Staff</th>
+						<th class="mdl-data-table__cell--non-numeric">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--orange-400">
