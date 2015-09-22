@@ -44,7 +44,7 @@
 </div>
 <div class="mdl-grid wow-overflow-hidden">
 	<!-- SEN Infomation -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.3s">
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.3s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--purple-200">
 			<h2 class="mdl-card__title-text">SEN Info</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -88,10 +88,11 @@
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--purple-400">
 				<i class="material-icons">add</i>
+			</button>
 		</div>
 	</div>
 	<!-- Key Worker -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.4s">
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.4s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--light-green-200">
 			<h2 class="mdl-card__title-text">Key Worker</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -135,10 +136,13 @@
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--light-green-400">
 				<i class="material-icons">add</i>
+			</button>
 		</div>
 	</div>
+</div>
+<div class="mdl-grid wow-overflow-hidden">
 	<!-- Pastoral -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.5s">
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.5s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--orange-200">
 			<h2 class="mdl-card__title-text">Pastoral</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -182,6 +186,55 @@
 		<div class="mdl-card__actions mdl-card--border">
 			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--orange-400">
 				<i class="material-icons">add</i>
+			</button>
+		</div>
+	</div>
+	<!-- Curriculum Overview -->
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.6s">
+		<div class="mdl-card__title mdl-color-text--grey-800 colour--red-200">
+			<h2 class="mdl-card__title-text">Curriculum Overview</h2>
+			<div class="mdl-layout-spacer"></div>
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-curriculum-overview">
+				<i class="material-icons">more_vert</i>
+			</button>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-curriculum-overview">
+				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
+				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+			</ul>
+		</div>
+		<div class="mdl-card__supporting-text supporting-text-table-container">
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
+				<thead>
+					<tr>
+						<th class="mdl-data-table__cell--non-numeric">Title</th>
+						<th class="mdl-data-table__cell--non-numeric">Staff</th>
+						<th class="mdl-data-table__cell--non-numeric">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--red-400">
+				<i class="material-icons">add</i>
+			</button>
 		</div>
 	</div>
 </div>
