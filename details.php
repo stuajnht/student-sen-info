@@ -23,9 +23,9 @@
  * This file holds the main template for the details of the student, with most
  * of the information being filled in through AJAX calls
  */
-?><div class="mdl-grid">
+?><div class="mdl-grid wow-overflow-hidden">
 	<!-- Student Details -->
-	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
 			<h2 class="mdl-card__title-text">Student Name</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -42,9 +42,9 @@
 		</div>
 	</div>
 </div>
-<div class="mdl-grid">
+<div class="mdl-grid wow-overflow-hidden">
 	<!-- SEN Infomation -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.3s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--purple-200">
 			<h2 class="mdl-card__title-text">SEN Info</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -90,7 +90,7 @@
 		</div>
 	</div>
 	<!-- Key Worker -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.4s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--light-green-200">
 			<h2 class="mdl-card__title-text">Key Worker</h2>
 			<div class="mdl-layout-spacer"></div>
@@ -136,7 +136,7 @@
 		</div>
 	</div>
 	<!-- Pastoral -->
-	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-card mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.5s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--orange-200">
 			<h2 class="mdl-card__title-text">Pastoral</h2>
 			<div class="mdl-layout-spacer"></div>
