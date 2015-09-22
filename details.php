@@ -52,6 +52,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
+				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
@@ -60,7 +61,7 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Title</th>
 						<th class="mdl-data-table__cell--non-numeric">Staff</th>
 						<th class="mdl-data-table__cell--non-numeric">Date</th>
 					</tr>
@@ -98,6 +99,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-key-worker">
+				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
@@ -106,7 +108,7 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Title</th>
 						<th class="mdl-data-table__cell--non-numeric">Staff</th>
 						<th class="mdl-data-table__cell--non-numeric">Date</th>
 					</tr>
@@ -144,6 +146,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-pastoral">
+				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
@@ -152,7 +155,7 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Message</th>
+						<th class="mdl-data-table__cell--non-numeric">Title</th>
 						<th class="mdl-data-table__cell--non-numeric">Staff</th>
 						<th class="mdl-data-table__cell--non-numeric">Date</th>
 					</tr>
