@@ -42,9 +42,10 @@ require('./config.php');
 // Load the HTML head section, as this is needed for all users
 require('./header.php');
 
-// Load the login page
+// Load the login / details page
 // TODO: Replace this with actual logon code checks
-require('./login.php');
+//require('./login.php');
+require('./details.php');
 
 // Load the footer section, as this is needed for all users
 require('./footer.php');

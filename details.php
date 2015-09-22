@@ -24,4 +24,35 @@
  * This file holds the main template for the details of the student, with most
  * of the information being filled in through AJAX calls
  */
-?>
+?><div class="mdl-grid">
+	<!-- Student Details -->
+	<div class="mdl-cell mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<h4>
+			Student Name
+		</h4>
+		Student details.
+	</div>
+</div>
+<div class="mdl-grid">
+	<!-- SEN Infomation -->
+	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<h4>
+			SEN Info
+		</h4>
+		Student details.
+	</div>
+	<!-- Key Worker -->
+	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<h4>
+			Key Worker
+		</h4>
+		Student details.
+	</div>
+	<!-- Pastoral -->
+	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+		<h4>
+			Pastoral
+		</h4>
+		Student details.
+	</div>
+</div>
