@@ -251,7 +251,7 @@
 </div>
 <script>
 	$( "#modal-add--sen" ).click(function() {
-		$( "#modal-box--sen" ).modal({opacity:60,overlayCss: {backgroundColor:"#000"}});
+		$( "#modal-box--sen" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 	});
 	$( "#modal-box--close" ).click(function() {
 		$.modal.close();
