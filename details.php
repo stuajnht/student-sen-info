@@ -52,7 +52,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
-				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
+				<li class="mdl-menu__item" id="modal-add--sen"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -222,3 +222,29 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal Box -->
+<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box" id="modal-box--sen">
+	<div class="mdl-card__title mdl-color-text--white mdl-color--primary">
+		<h2 class="mdl-card__title-text">Add SEN Info</h2>
+	</div>
+	<div class="mdl-card__supporting-text">
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--4-col">Title</div>
+			<div class="mdl-cell mdl-cell--8-col">Box</div>
+		</div>
+	</div>
+	<div class="mdl-card__actions mdl-card--border">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+			Save
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right simple-modal-close">
+			Cancel
+		</button>
+	</div>
+</div>
+<script>
+	$( "#modal-add--sen" ).click(function() {
+		$( "#modal-box--sen" ).modal({overlayClose:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+</script>

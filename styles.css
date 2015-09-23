@@ -40,6 +40,11 @@
 	overflow: hidden;
 }
 
+/* Modal Box Settings */
+.modal-box {
+	display: none;
+}
+
 /* Details Page Card Tables */
 .supporting-text-table-container {
 	padding: 0;
