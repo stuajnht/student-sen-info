@@ -238,13 +238,16 @@
 		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
 			Save
 		</button>
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right simple-modal-close">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--close">
 			Cancel
 		</button>
 	</div>
 </div>
 <script>
 	$( "#modal-add--sen" ).click(function() {
-		$( "#modal-box--sen" ).modal({overlayClose:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+		$( "#modal-box--sen" ).modal({opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-box--close" ).click(function() {
+		$.modal.close();
 	});
 </script>
