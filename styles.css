@@ -30,6 +30,11 @@
 	float: right;
 }
 
+/* Setting textareas to use a consistent font */
+textarea {
+	font-family: "Roboto","Helvetica","Arial",sans-serif !important;
+}
+
 /* Login page grid cell */
 .login-cell {
 	padding: 16px 32px;
