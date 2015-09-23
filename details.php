@@ -234,7 +234,7 @@
 				<input class="mdl-textfield__input" type="text" id="modal-title" />
 				<label class="mdl-textfield__label" for="modal-title">Title</label>
 			</div>
-			<div class="mdl-textfield mdl-js-textfield modal-textfield">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
 				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>
 				<label class="mdl-textfield__label" for="modal-message">Message</label>
 			</div>
