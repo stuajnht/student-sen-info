@@ -43,6 +43,15 @@
 /* Modal Box Settings */
 .modal-box {
 	display: none;
+	width: 100%;
+	min-width: 400px;
+	max-width: 800px;
+}
+.modal-supporting-text {
+	width: 95%;
+}
+.modal-textfield {
+	width: 100%;
 }
 
 /* Details Page Card Tables */

@@ -228,11 +228,17 @@
 	<div class="mdl-card__title mdl-color-text--white mdl-color--primary">
 		<h2 class="mdl-card__title-text">Add SEN Info</h2>
 	</div>
-	<div class="mdl-card__supporting-text">
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col">Title</div>
-			<div class="mdl-cell mdl-cell--8-col">Box</div>
-		</div>
+	<div class="mdl-card__supporting-text modal-supporting-text">
+		<form action="#">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+				<input class="mdl-textfield__input" type="text" id="modal-title" />
+				<label class="mdl-textfield__label" for="modal-title">Title</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield modal-textfield">
+				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>
+				<label class="mdl-textfield__label" for="modal-message">Message</label>
+			</div>
+		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
 		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
