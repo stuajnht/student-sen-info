@@ -52,6 +52,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
+				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -84,11 +85,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--purple-400">
-				<i class="material-icons">add</i>
-			</button>
 		</div>
 	</div>
 	<!-- Key Worker -->
@@ -100,6 +96,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-key-worker">
+				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -132,11 +129,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--light-green-400">
-				<i class="material-icons">add</i>
-			</button>
 		</div>
 	</div>
 </div>
@@ -150,6 +142,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-pastoral">
+				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -182,11 +175,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--orange-400">
-				<i class="material-icons">add</i>
-			</button>
 		</div>
 	</div>
 	<!-- Curriculum Overview -->
@@ -198,6 +186,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-curriculum-overview">
+				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -230,11 +219,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right colour--red-400">
-				<i class="material-icons">add</i>
-			</button>
 		</div>
 	</div>
 </div>
