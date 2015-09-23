@@ -126,7 +126,9 @@ textarea {
 }
 .colour--red-400 {
 	background-color: #ef5350;
+	color: #fff;
 }
 .colour--red-400:hover {
 	background-color: #e53935;
+	color: #fff;
 }

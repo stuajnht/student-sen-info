@@ -52,7 +52,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
-				<li class="mdl-menu__item" id="modal-add--sen"><i class="material-icons">add</i> Add</li>
+				<li class="mdl-menu__item" id="modal-add--sen-info"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -96,7 +96,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-key-worker">
-				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
+				<li class="mdl-menu__item" id="modal-add--key-worker"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -142,7 +142,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-pastoral">
-				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
+				<li class="mdl-menu__item" id="modal-add--pastoral"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -186,7 +186,7 @@
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-curriculum-overview">
-				<li class="mdl-menu__item"><i class="material-icons">add</i> Add</li>
+				<li class="mdl-menu__item" id="modal-add--curriculum"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -224,8 +224,8 @@
 </div>
 
 <!-- Modal Box -->
-<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--sen" data-wow-duration="0.5s">
-	<div class="mdl-card__title mdl-color-text--white colour--purple-200">
+<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--modal" data-wow-duration="0.5s">
+	<div class="mdl-card__title" id="modal-box--title-div">
 		<h2 class="mdl-card__title-text">Add SEN Info</h2>
 	</div>
 	<div class="mdl-card__supporting-text modal-supporting-text">
@@ -241,19 +241,38 @@
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect colour--purple-400">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="modal-box--button-save">
 			Save
 		</button>
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--close">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--buton-close">
 			Cancel
 		</button>
 	</div>
 </div>
 <script>
-	$( "#modal-add--sen" ).click(function() {
-		$( "#modal-box--sen" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	$( "#modal-add--sen-info" ).click(function() {
+		$( "#modal-box--title-div" ).addClass("colour--purple-200 mdl-color-text--white");
+		$( "#modal-box--button-save" ).addClass("colour--purple-400");
+		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 	});
-	$( "#modal-box--close" ).click(function() {
+	$( "#modal-add--key-worker" ).click(function() {
+		$( "#modal-box--title-div" ).addClass("colour--light-green-200 mdl-color-text--grey-800");
+		$( "#modal-box--button-save" ).addClass("colour--light-green-400");
+		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-add--pastoral" ).click(function() {
+		$( "#modal-box--title-div" ).addClass("colour--orange-200 mdl-color-text--grey-800");
+		$( "#modal-box--button-save" ).addClass("colour--orange-400");
+		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-add--curriculum" ).click(function() {
+		$( "#modal-box--title-div" ).addClass("colour--red-200 mdl-color-text--white");
+		$( "#modal-box--button-save" ).addClass("colour--red-400");
+		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-box--buton-close" ).click(function() {
 		$.modal.close();
+		$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
+		$( "#modal-box--button-save" ).removeClass("colour--purple-400 colour--light-green-400 colour--orange-400 colour--red-400");
 	});
 </script>
