@@ -224,7 +224,7 @@
 </div>
 
 <!-- Modal Box -->
-<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box" id="modal-box--sen">
+<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--sen" data-wow-duration="0.5s">
 	<div class="mdl-card__title mdl-color-text--white colour--purple-200">
 		<h2 class="mdl-card__title-text">Add SEN Info</h2>
 	</div>
