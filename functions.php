@@ -65,4 +65,31 @@ function dbConnect($host, $user, $pass, $name) {
 function dbClose($connection) {
 	$connection->close();
 }
+
+/**
+ * All database SELECT queries should be passed through here
+ *
+ * The relevant page should generate a fully formatted and sanitised
+ * SQL query, which is then executed by this function. The results
+ * will be passed back as a MySQLi object, which can then be accessed
+ * via dbSelectGetArray or dbSelectGetRow, or the rows counted via
+ * dbSelectCountRows
+ *
+ * @see dbSelectGetArray
+ * @see dbSelectGetRow
+ * @see dbSeleceCountRows
+ * @param string $sql The full sanitised SQL query
+ * @param mixed $connection The connection to the database
+ * @return mixed An object to the SQL result, or null if it failed
+ */
+function dbSelect($sql, $connection) {
+	$queryResult = $connection->query($sql);
+	
+	if ($queryResult === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $connection->error, E_USER_ERROR);
+		return null;
+	} else {
+		return $queryResult;
+	}
+}
 ?>
