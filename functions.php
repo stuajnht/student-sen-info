@@ -38,6 +38,12 @@ require('./config.php');
 /**
  * Connect to the database, and pass the connection information back to the
  * caling function
+ *
+ * @param string $host The server the database is on, usually $CFG['DBHost']
+ * @param string $user The user account to connect to the database with, usually $CFG['DBUser']
+ * @param string $pass The password for the given user account, usually $CFG['DBPass']
+ * @param string $name The name of the database to use, usually $CFG['DBName']
+ * @return mixed A connection to the database or null if it failed
  */
 function dbConnect($host, $user, $pass, $name) {
 	$connection = new mysqli($host, $user, $pass, $name);
@@ -53,6 +59,8 @@ function dbConnect($host, $user, $pass, $name) {
 
 /**
  * Closing the connection to the database
+ *
+ * @param mixed The connection to the database that is to be closed
  */
 function dbClose($connection) {
 	$connection->close();
