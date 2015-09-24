@@ -105,4 +105,19 @@ function dbSelect($sql, $connection) {
 function dbSelectCountRows($queryResult) {
 	return $queryResult->num_rows;
 }
+
+/**
+ * Gets a specific row result from the database SELECT query
+ *
+ * @see dbSelect
+ * @see dbSelectGetArray
+ * @see dbSelectCountRows
+ * @param mixed $queryResult The object that holds the results of a SQL query
+ * @param int $resultRowNumber The row number that we want to get the data from
+ * @return array The data from the selected row
+ */
+function dbSelectGetRow($queryResult, $resultRowNumber = 0) {
+	$queryResult->data_seek($resultRowNumber);
+	return $queryResult->fetch_array(MYSQLI_ASSOC);
+}
 ?>
