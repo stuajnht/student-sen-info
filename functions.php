@@ -26,15 +26,6 @@
 // Seeing if the script is being called from another webpage, or directly
 defined('RUNNING_FROM') || die('<h2>You cannot access this page directly.</h2>');
 
-// Checking to see if the config.php file exists
-if (!file_exists('./config.php')) {
-	// The config file wasn't found, so quit with an error message
-	die('<h2>The config file was not found. Contact your network admin.</h2>');
-}
-
-// Getting any settings from the config file
-require('./config.php');
-
 /**
  * Connect to the database, and pass the connection information back to the
  * caling function
