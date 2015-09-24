@@ -77,7 +77,7 @@ function dbClose($connection) {
  *
  * @see dbSelectGetArray
  * @see dbSelectGetRow
- * @see dbSeleceCountRows
+ * @see dbSelectCountRows
  * @param string $sql The full sanitised SQL query
  * @param mixed $connection The connection to the database
  * @return mixed An object to the SQL result, or null if it failed
@@ -91,5 +91,18 @@ function dbSelect($sql, $connection) {
 	} else {
 		return $queryResult;
 	}
+}
+
+/**
+ * Counts the number of rows returned from the database SELECT query
+ *
+ * @see dbSelect
+ * @see dbSelectGetArray
+ * @see dbSelectGetRow
+ * @param mixed $queryResult The object that holds the results of a SQL query
+ * @return int The number of rows returned from the query
+ */
+function dbSelectCountRows($queryResult) {
+	return $queryResult->num_rows;
 }
 ?>
