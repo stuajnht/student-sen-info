@@ -75,7 +75,7 @@ function dbClose($connection) {
  * via dbSelectGetArray or dbSelectGetRow, or the rows counted via
  * dbSelectCountRows
  *
- * @see dbSelectGetArray
+ * @see dbSelectGetRows
  * @see dbSelectGetRow
  * @see dbSelectCountRows
  * @param string $sql The full sanitised SQL query
@@ -97,7 +97,7 @@ function dbSelect($sql, $connection) {
  * Counts the number of rows returned from the database SELECT query
  *
  * @see dbSelect
- * @see dbSelectGetArray
+ * @see dbSelectGetRows
  * @see dbSelectGetRow
  * @param mixed $queryResult The object that holds the results of a SQL query
  * @return int The number of rows returned from the query
@@ -110,7 +110,7 @@ function dbSelectCountRows($queryResult) {
  * Gets a specific row result from the database SELECT query
  *
  * @see dbSelect
- * @see dbSelectGetArray
+ * @see dbSelectGetRows
  * @see dbSelectCountRows
  * @param mixed $queryResult The object that holds the results of a SQL query
  * @param int $resultRowNumber The row number that we want to get the data from
@@ -119,5 +119,26 @@ function dbSelectCountRows($queryResult) {
 function dbSelectGetRow($queryResult, $resultRowNumber = 0) {
 	$queryResult->data_seek($resultRowNumber);
 	return $queryResult->fetch_array(MYSQLI_ASSOC);
+}
+
+/**
+ * Gets all rows returned from the result of the database SELECT query
+ *
+ * @see dbSelect
+ * @see dbSelectGetRow
+ * @see dbSelectCountRows
+ * @param mixed $queryResult The object that holds the results of a SQL query
+ * @return array The data from the selected rows
+ */
+function dbSelectGetRows($queryResult) {
+	$allRows = array();
+	
+	$totalRows = dbSelectCountRows($queryResult);
+	
+	for ($row = 0; $row <= ($totalRows - 1); $row++) {
+		$allRows[] = dbSelectGetRow($queryResult, $row);
+	}
+	
+	return $allRows;
 }
 ?>
