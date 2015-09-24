@@ -50,4 +50,11 @@ function dbConnect($host, $user, $pass, $name) {
 		return $connection;
 	}
 }
+
+/**
+ * Closing the connection to the database
+ */
+function dbClose($connection) {
+	$connection->close();
+}
 ?>
