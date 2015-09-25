@@ -55,6 +55,8 @@
 						$('.mdl-layout__content').html(result);
 						// Updating the DOM so that all MDL elements get updated
 						componentHandler.upgradeDom();
+						// Give focus to the search textbox
+						$('#search--search-box').focus();
 					}
 				}
 				xmlhttp.open("GET","search.php",true);

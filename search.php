@@ -34,14 +34,14 @@
 		</div>
 		<div class="mdl-card__supporting-text">
 			<form action="#">
-				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+				<span class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-textfield">
 					<input class="mdl-textfield__input" type="text" id="search--search-box" />
 					<label class="mdl-textfield__label" for="search--search-box">Search for person</label>
-				</div>
+				</span>
+				<span class="mdl-spinner mdl-js-spinner is-active" id="search--loading-spinner"></span>
 			</form>
 		</div>
 		<div class="mdl-card__actions" id="search--search-results">
-			<div class="mdl-spinner mdl-js-spinner is-active"></div>
 		</div>
 	</div>
 </div>

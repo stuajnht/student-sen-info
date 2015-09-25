@@ -40,6 +40,11 @@ textarea {
 	padding: 16px 32px;
 }
 
+/* Search page */
+.search-textfield {
+	width: 90%;
+}
+
 /* Hiding scrollbar on WOW animations */
 .wow-overflow-hidden {
 	overflow: hidden;
