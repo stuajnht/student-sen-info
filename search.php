@@ -19,9 +19,9 @@
  */
 
 /**
- * Searches the student database to find a match with what has been typed in
+ * Generates the search form so that users can search for people
  *
- * This file is called from AJAX calls to generate a search card with a list
+ * This file is called from AJAX calls to generate a search form with a list
  * of possible students as results, which when clicked load their details
  */
 
