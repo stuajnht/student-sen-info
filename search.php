@@ -26,13 +26,19 @@
  */
 
 ?><div class="mdl-grid wow-overflow-hidden">
-	<!-- Student Details -->
-	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp">
+	<!-- Search Form -->
+	<div class="mdl-cell mdl-cell--3-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
-			<h2 class="mdl-card__title-text">Search Results</h2>
+			<h2 class="mdl-card__title-text">Search</h2>
 		</div>
 		<div class="mdl-card__supporting-text">
-			Student details.
+			<form action="#">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+					<input class="mdl-textfield__input" type="text" id="search--search-box" />
+					<label class="mdl-textfield__label" for="search--search-box">Search for person</label>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
