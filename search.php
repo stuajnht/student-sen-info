@@ -40,5 +40,8 @@
 				</div>
 			</form>
 		</div>
+		<div class="mdl-card__actions" id="search--search-results">
+			<div class="mdl-spinner mdl-js-spinner is-active"></div>
+		</div>
 	</div>
 </div>
