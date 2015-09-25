@@ -45,3 +45,41 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		var thread = null;
+		
+		$('#search--search-box').keyup(function() {
+			clearTimeout(thread);
+			thread = setTimeout(function() {
+				// Making sure that something is typed, to prevent searching the whole database table
+				if ($.trim($('#search--search-box').val()).length>=1) {
+					$('#search--results-loading').addClass('is-active');
+					if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp=new XMLHttpRequest();
+					} else {// code for IE6, IE5
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					xmlhttp.onreadystatechange=function() {
+						// Seeing what was returned
+						if (xmlhttp.readyState==4 && xmlhttp.status!=200) {
+							// Any HTTP error results in an error message being shown
+							alert('AJAX error');
+						}
+						if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+							// Displaying the results in the div
+							result = xmlhttp.responseText;
+							//alert(result);
+							$('#search--search-results').html(result);
+							$('#search--results-loading').removeClass('is-active');
+						}
+					}
+					
+					xmlhttp.open("POST","search-results.php",true);
+					xmlhttp.send("query="+$('#search--search-box').val());
+				}
+			}, 500);
+		});
+	});
+</script>
