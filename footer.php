@@ -30,32 +30,34 @@
 <script>new WOW().init();</script>
 <script>
 	// Controlling the search form being shown
-	$(document).ready( "#button--show-search" ).click(function() {
-		$('.mdl-layout__content').addClass('animated fadeOut');
-		$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-			$('.mdl-layout__content').empty();
-			$('.mdl-layout__content').removeClass('animated fadeOut');
-			
-			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp=new XMLHttpRequest();
-			} else {// code for IE6, IE5
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=function() {
-				// Seeing what was returned
-				if (xmlhttp.readyState==4 && xmlhttp.status!=200) {
-					// Any HTTP error results in an error message being shown
-					alert('Unable to load the search form. Please try again.');
+	$(document).ready(function(){
+		$("#button--show-search").click(function() {
+			$('.mdl-layout__content').addClass('animated fadeOut');
+			$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+				$('.mdl-layout__content').empty();
+				$('.mdl-layout__content').removeClass('animated fadeOut');
+
+				if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				} else {// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 				}
-				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-					// Displaying the results in the div
-					result = xmlhttp.responseText;
-					//alert(result);
-					$('.mdl-layout__content').html(result);
+				xmlhttp.onreadystatechange=function() {
+					// Seeing what was returned
+					if (xmlhttp.readyState==4 && xmlhttp.status!=200) {
+						// Any HTTP error results in an error message being shown
+						alert('Unable to load the search form. Please try again.');
+					}
+					if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+						// Displaying the results in the div
+						result = xmlhttp.responseText;
+						//alert(result);
+						$('.mdl-layout__content').html(result);
+					}
 				}
-			}
-			xmlhttp.open("GET","search.php",true);
-			xmlhttp.send();
+				xmlhttp.open("GET","search.php",true);
+				xmlhttp.send();
+			});
 		});
 	});
 </script>
