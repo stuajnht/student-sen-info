@@ -58,6 +58,7 @@ if (isset($_POST['forename'], $_POST['surname']) &&
 	
 	$insertStatement->execute();
 	
+	// Returning the ID of the student
 	echo $insertStatement->insert_id;
 } else {
 	// There was nothing sent in the POST request, so return -1
