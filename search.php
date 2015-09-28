@@ -117,7 +117,7 @@
 		// Student successfully added, so open the details page on their records
 		addStudentPost.done(function( data ) {
 			// Making sure that there is an ID for the student and saving was completed
-			if (data = -1) {
+			if (data == "-1") {
 				alert("An error happened when saving data");
 			} else {
 				alert("Add student post complete");
