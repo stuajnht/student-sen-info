@@ -65,5 +65,26 @@
 		});
 	});
 </script>
+<script>
+	// Displaying the details of a student that has been searched for or added
+	function showStudent(studentID) {
+		// Remove the search form
+		$('.mdl-layout__content').addClass('animated fadeOut');
+		$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+			$('.mdl-layout__content').empty();
+			$('.mdl-layout__content').removeClass('animated fadeOut');
+			
+			// Load the details page with the student information
+			var getStudentDetails = $.post( 'details.php', { student: studentID } );
+			
+			// Displaying the student details in the div
+			getStudentDetails.done(function( data ) {
+				$('.mdl-layout__content').html(data);
+				// Updating the DOM so that all MDL elements get updated
+				componentHandler.upgradeDom();
+			}
+		});
+	}
+</script>
 </body>
 </html>

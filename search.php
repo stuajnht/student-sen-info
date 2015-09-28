@@ -118,9 +118,11 @@
 		addStudentPost.done(function( data ) {
 			// Making sure that there is an ID for the student and saving was completed
 			if (data == "-1") {
-				alert("An error happened when saving data");
+				alert("An error happened when saving data. Please try again.");
 			} else {
-				alert("Add student post complete");
+				// Clear the modal box and remove the search form, then display the student details
+				$.modal.close();
+				showStudent(data);
 			}
 		});
 	});
