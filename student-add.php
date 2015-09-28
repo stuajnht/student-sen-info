@@ -48,8 +48,17 @@ $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], 
 // Checking to make sure that there was something posted in the request
 if (isset($_POST['forename'], $_POST['surname']) &&
 	!empty($_POST['forename'] && !empty($_POST['surname']))) {
-	// TODO: Remove this value as only for testing
-	echo "1";
+	// Cleaning up any post requests that are sent
+	$forename = $databaseConnection->real_escape_string($_POST['forename']);
+	$surname = $databaseConnection->real_escape_string($_POST['surname']);
+	
+	// Creating the SQL INSERT statement
+	$sql = "INSERT INTO tbl_students (StudentForename, StudentSurname) VALUES ('$forename', '$surname')";
+	$insertStatement = $databaseConnection->prepare($sql);
+	
+	$insertStatement->execute();
+	
+	echo $insertStatement->insert_id;
 } else {
 	// There was nothing sent in the POST request, so return -1
 	echo "-1";
