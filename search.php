@@ -52,9 +52,13 @@
 	</div>
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
-				<input class="mdl-textfield__input" type="text" id="modal-title" />
-				<label class="mdl-textfield__label" for="modal-title">Title</label>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="modal-add-forename-div">
+				<input class="mdl-textfield__input" type="text" id="modal-add-forename" />
+				<label class="mdl-textfield__label" for="modal-title">Forename</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="modal-add-surname-div">
+				<input class="mdl-textfield__input" type="text" id="modal-add-surname" />
+				<label class="mdl-textfield__label" for="modal-title">Surname</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
 				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>

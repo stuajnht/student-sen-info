@@ -71,6 +71,13 @@ function addStudentButton($forename = "", $surname = "") {
 	// JavaScript to display the modal box to add new students if needed
 	$html .= '<script>';
 	$html .= '$( "#search--button-add" ).click(function() {';
+	$html .= '	$( "#modal-add-forename").val($( "#search--add-student-forename").text());';
+	$html .= '	$( "#modal-add-forename-div").addClass("is-dirty");';
+	$html .= '	$( "#modal-add-surname").val($( "#search--add-student-surname").text());';
+	if (strcasecmp($forename, $surname) !== 0) {
+		// Don't add the is-dirty class if there is no surname given
+		$html .= '	$( "#modal-add-surname-div").addClass("is-dirty");';
+	}
 	$html .= '	$( "#modal-box--add-student" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});';
 	$html .= '});';
 	$html .= '</script>';
