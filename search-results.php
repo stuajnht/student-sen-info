@@ -85,6 +85,22 @@ function addStudentButton($forename = "", $surname = "") {
 	return $html;
 }
 
+/**
+ * Creates a link for each student result returned from the search
+ *
+ * @param array $tableRows The array of rows to format
+ * @returns string A formatted link to view the student details
+ */
+function createDetailLink($tableRows) {
+	// Looping around each row to generate a link
+	$link = '';
+	foreach ($tableRows as $row) {
+		$link .= '<a class="search--result-link" onclick="showStudent('.$row['StudentID'].');">'.$row['StudentForename'].' '.$row['StudentSurname'].'</a><br>';
+	}
+	
+	return $link;
+}
+
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
@@ -112,7 +128,7 @@ if (isset($_POST['query'])) {
 	
 	// Seeing if any results were found
 	if (dbSelectCountRows($queryResult) > 0) {
-		echo "Results found";
+		echo createDetailLink(dbSelectGetRows($queryResult));
 	} else {
 		echo "No results found";
 	}

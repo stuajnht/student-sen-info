@@ -44,6 +44,16 @@ textarea {
 .search-textfield {
 	width: 90%;
 }
+.search--result-link {
+	cursor: pointer;
+	line-height: 32px;
+}
+.search--result-link:hover {
+	text-decoration: underline;
+}
+#search--button-add {
+	margin-top: 16px
+}
 
 /* Hiding scrollbar on WOW animations */
 .wow-overflow-hidden {
