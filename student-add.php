@@ -46,7 +46,8 @@ require('./functions.php');
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
 // Checking to make sure that there was something posted in the request
-if (isset($_POST['forename']) && isset($_POST['surname'])) {
+if (isset($_POST['forename'], $_POST['surname']) &&
+	!empty($_POST['forename'] && !empty($_POST['surname']))) {
 	// TODO: Remove this value as only for testing
 	echo "1";
 } else {
