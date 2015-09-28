@@ -67,10 +67,10 @@
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="modal-box--button-save">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="modal-box--search-button-save">
 			Save
 		</button>
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--buton-close">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--search-button-close">
 			Cancel
 		</button>
 	</div>
@@ -106,7 +106,20 @@
 			}, 500);
 		});
 	});
-	$( "#modal-box--buton-close" ).click(function() {
+	$( "#modal-box--search-button-save" ).click(function() {
+		var studentForename = $('#modal-add-forename').val(),
+			studentSurname = $('#modal-add-surname').val(),
+			url = "student-add.php";
+		
+		// Send the data using post
+		var addStudentPost = $.post( url, { forename: studentForename, surname: studentSurname } );
+		
+		// Student successfully added, so open the details page on their records
+		addStudentPost.done(function( data ) {
+			alert("Add student post complete");
+		});
+	});
+	$( "#modal-box--search-button-close" ).click(function() {
 		$.modal.close();
 	});
 </script>
