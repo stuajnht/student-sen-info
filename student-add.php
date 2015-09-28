@@ -48,10 +48,10 @@ $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], 
 // Checking to make sure that there was something posted in the request
 if (isset($_POST['forename']) && isset($_POST['surname'])) {
 	// TODO: Remove this value as only for testing
-	return 1;
+	echo "1";
 } else {
 	// There was nothing sent in the POST request, so return -1
-	return -1;
+	echo "-1";
 }
 
 // Closing the connection to the database
