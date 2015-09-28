@@ -41,6 +41,36 @@ require('./config.php');
 // Loading the functions file
 require('./functions.php');
 
+/**
+ * Generates a button to add a new student
+ *
+ * If there are no results found for the search terms given,
+ * give the user an opportunity to add a new student by clicking
+ * on a button, which will open a modal on the search form
+ * for them to fill in the required details. This button also shows
+ * if there are results found, but it's not the person the user is
+ * looking for
+ *
+ * @param string $forename The forname of the student from the search terms
+ * @param string $surname The surname of the student from the search terms
+ * @return string The HTML code for displaying a 'new student' button
+ */
+function addStudentButton($forename = "", $surname = "") {
+	$html = '<div class="mdl-layout-spacer"></div>';
+	$html .= '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="search--button-add">';
+	$html .= 'Add';
+	$html .= '</button>';
+	$html .= '<span id="search--add-student-forename" style="display:none;">'.$forename.'</span>';
+	
+	// If there isn't a difference between the forename and surname, such as
+	// only one word was entered in the search, don't include the surname
+	if (strcasecmp($forename, $surname) !== 0) {
+		$html .= '<span id="search--add-student-surname" style="display:none;">'.$surname.'</span>';
+	}
+	
+	return $html;
+}
+
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
@@ -72,8 +102,14 @@ if (isset($_POST['query'])) {
 	} else {
 		echo "No results found";
 	}
+	
+	// Showing the add button, with the name parts filled in
+	echo addStudentButton($searchTerms[0], $searchTerms[1]);
 } else {
 	echo "No results found";
+	
+	// Showing the add button, without the name parts filled in
+	echo addStudentButton();
 }
 
 // Closing the connection to the database
