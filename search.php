@@ -38,7 +38,7 @@
 					<input class="mdl-textfield__input" type="text" id="search--search-box" />
 					<label class="mdl-textfield__label" for="search--search-box">Search for person</label>
 				</span>
-				<span class="mdl-spinner mdl-js-spinner is-active" id="search--loading-spinner"></span>
+				<span class="mdl-spinner mdl-js-spinner" id="search--loading-spinner"></span>
 			</form>
 		</div>
 		<div class="mdl-card__actions" id="search--search-results">
@@ -54,30 +54,24 @@
 			thread = setTimeout(function() {
 				// Making sure that something is typed, to prevent searching the whole database table
 				if ($.trim($('#search--search-box').val()).length>=1) {
-					$('#search--results-loading').addClass('is-active');
-					if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-						xmlhttp=new XMLHttpRequest();
-					} else {// code for IE6, IE5
-						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-					}
+					$('#search--loading-spinner').addClass('is-active');
 					
-					xmlhttp.onreadystatechange=function() {
-						// Seeing what was returned
-						if (xmlhttp.readyState==4 && xmlhttp.status!=200) {
-							// Any HTTP error results in an error message being shown
-							alert('AJAX error');
-						}
-						if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-							// Displaying the results in the div
-							result = xmlhttp.responseText;
-							//alert(result);
-							$('#search--search-results').html(result);
-							$('#search--results-loading').removeClass('is-active');
-						}
-					}
+					var searchQuery = $('#search--search-box').val(),
+						url = "search-results.php";
 					
-					xmlhttp.open("POST","search-results.php",true);
-					xmlhttp.send("query="+$('#search--search-box').val());
+					// Send the data using post
+					var posting = $.post( url, { query: searchQuery } );
+					
+					// Put the results in a div
+					posting.done(function( data ) {
+						$('#search--search-results').html(data);
+						
+					});
+					
+					// Removing the spinner active class
+					posting.always(function() {
+						$('#search--loading-spinner').removeClass('is-active');
+					});
 				}
 			}, 500);
 		});
