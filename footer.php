@@ -82,7 +82,7 @@
 				$('.mdl-layout__content').html(data);
 				// Updating the DOM so that all MDL elements get updated
 				componentHandler.upgradeDom();
-			}
+			});
 		});
 	}
 </script>
