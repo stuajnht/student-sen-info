@@ -68,6 +68,13 @@ function addStudentButton($forename = "", $surname = "") {
 		$html .= '<span id="search--add-student-surname" style="display:none;">'.$surname.'</span>';
 	}
 	
+	// JavaScript to display the modal box to add new students if needed
+	$html .= '<script>';
+	$html .= '$( "#search--button-add" ).click(function() {';
+	$html .= '	$( "#modal-box--add-student" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});';
+	$html .= '});';
+	$html .= '</script>';
+	
 	return $html;
 }
 

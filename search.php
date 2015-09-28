@@ -45,6 +45,32 @@
 		</div>
 	</div>
 </div>
+<!-- Modal Box -->
+<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--add-student" data-wow-duration="0.5s">
+	<div class="mdl-card__title mdl-color--accent mdl-color-text--white" id="modal-box--title-div">
+		<h2 class="mdl-card__title-text">Add Student</h2>
+	</div>
+	<div class="mdl-card__supporting-text modal-supporting-text">
+		<form action="#">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+				<input class="mdl-textfield__input" type="text" id="modal-title" />
+				<label class="mdl-textfield__label" for="modal-title">Title</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>
+				<label class="mdl-textfield__label" for="modal-message">Message</label>
+			</div>
+		</form>
+	</div>
+	<div class="mdl-card__actions mdl-card--border">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="modal-box--button-save">
+			Save
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box--buton-close">
+			Cancel
+		</button>
+	</div>
+</div>
 <script>
 	$(document).ready(function() {
 		var thread = null;
@@ -75,5 +101,8 @@
 				}
 			}, 500);
 		});
+	});
+	$( "#modal-box--buton-close" ).click(function() {
+		$.modal.close();
 	});
 </script>
