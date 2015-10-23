@@ -214,7 +214,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 					<tr>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
-						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
+						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
 					</tr>
 					<?php
 					// End of messages foreach and if statements
