@@ -231,7 +231,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 <!-- Modal Box -->
 <div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--modal" data-wow-duration="0.5s">
 	<div class="mdl-card__title" id="modal-box--title-div">
-		<h2 class="mdl-card__title-text">Add SEN Info</h2>
+		<h2 class="mdl-card__title-text" id="modal-box--title-text"></h2>
 	</div>
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
@@ -255,6 +255,21 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	</div>
 </div>
 <script>
+	<?php
+	// Loading the values from the panelData array, so that the 'add' buttons on the
+	// panels display the correct modal box information
+	foreach($panelData as $panelValues) {
+	?>
+		$( "#modal-add--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
+			$( "#modal-box--title-div" ).addClass("colour--<?php echo $panelValues['colour']; ?>-200 mdl-color-text--<?php echo $panelValues['textColour']; ?>");
+			$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
+			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
+			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+		});
+	<?php
+	// End foreach loop to generate the panel add button code
+	}
+	?>
 	$( "#modal-add--sen-info" ).click(function() {
 		$( "#modal-box--title-div" ).addClass("colour--purple-200 mdl-color-text--white");
 		$( "#modal-box--button-save" ).addClass("colour--purple-400");
