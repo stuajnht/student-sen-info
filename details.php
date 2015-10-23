@@ -205,7 +205,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 					<?php
 					// Generating a list of messages relevant to this panel and student
 					// and displaying them for the user to see and select from
-					$sqlMessages = "SELECT * FROM `sen_info`.`tbl_messages` WHERE ((PanelID = ".$panel['PanelID'].") AND (StudentID = ".$_POST['student'].") AND (MessageStatus = 0)) ORDER BY MessageDate DESC";
+					$sqlMessages = "SELECT * FROM `sen_info`.`tbl_messages` WHERE ((PanelID = ".$panel['PanelID'].") AND (StudentID = ".$databaseConnection->real_escape_string($_POST['student']).") AND (MessageStatus = 0)) ORDER BY MessageDate DESC";
 					$queryResultMessages = dbSelect($sqlMessages, $databaseConnection);
 					
 					if (dbSelectCountRows($queryResultMessages) > 0) {
