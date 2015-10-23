@@ -160,11 +160,16 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	$sqlPanels = "SELECT * FROM `sen_info`.`tbl_panels` WHERE (PanelHidden = 0) ORDER BY DisplayOrder";
 	$queryResultPanels = dbSelect($sqlPanels, $databaseConnection);
 
+	// The default animation delay for the first panel to be shown
+	$animationDelay = 0.2;
+
 	if (dbSelectCountRows($queryResultPanels) > 0) {
 		foreach (dbSelectGetRows($queryResultPanels) as $panel) {
+			// Increasing the delay in the panels being animated in
+			$animationDelay += 0.1;
 	?>
 	<!-- <?php echo $panel['PanelTitle']; ?> -->
-	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.3s">
+	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="<?php echo $animationDelay; ?>s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--purple-200">
 			<h2 class="mdl-card__title-text"><?php echo $panel['PanelTitle']; ?></h2>
 			<div class="mdl-layout-spacer"></div>
