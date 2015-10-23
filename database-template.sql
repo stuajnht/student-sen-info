@@ -85,9 +85,9 @@ CREATE TABLE `tbl_panels` (
   `PanelID` int(11) NOT NULL,
   `PanelTitle` varchar(255) NOT NULL,
   `DisplayOrder` int(11) NOT NULL,
-  `PrimaryColour` varchar(7) NOT NULL,
-  `AccentColour` varchar(7) NOT NULL,
-  `AccentColourHover` varchar(7) NOT NULL,
+  `Colour` varchar(16) NOT NULL,
+  `TextColour` varchar(16) NOT NULL,
+  `AccentColourHover` varchar(16) NOT NULL,
   `PanelHidden` int(11) NOT NULL,
   PRIMARY KEY (`PanelID`)
 );
@@ -99,7 +99,7 @@ CREATE TABLE `tbl_panels` (
 
 LOCK TABLES `tbl_panels` WRITE;
 /*!40000 ALTER TABLE `tbl_panels` DISABLE KEYS */;
-INSERT INTO `tbl_panels` VALUES (1,'SEN Info',1,'#ce93d8','#ab47bc','#8e24aa',0),(2,'Key Worker',2,'#c5e1a5','#9ccc65','#7cb342',0),(3,'Pastoral',3,'#ffcc80','#ffa726','#fb8c00',0),(4,'Curriculum Overview',4,'#ef9a9a','#ef5350','#e53935',0);
+INSERT INTO `tbl_panels` VALUES (1,'SEN Info',1,'purple','white','#8e24aa',0),(2,'Key Worker',2,'light-green','grey-800','#7cb342',0),(3,'Pastoral',3,'orange','grey-800','#fb8c00',0),(4,'Curriculum Overview',4,'red','grey-800','#e53935',0);
 /*!40000 ALTER TABLE `tbl_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
