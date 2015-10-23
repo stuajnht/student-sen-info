@@ -270,26 +270,6 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	// End foreach loop to generate the panel add button code
 	}
 	?>
-	$( "#modal-add--sen-info" ).click(function() {
-		$( "#modal-box--title-div" ).addClass("colour--purple-200 mdl-color-text--white");
-		$( "#modal-box--button-save" ).addClass("colour--purple-400");
-		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
-	});
-	$( "#modal-add--key-worker" ).click(function() {
-		$( "#modal-box--title-div" ).addClass("colour--light-green-200 mdl-color-text--grey-800");
-		$( "#modal-box--button-save" ).addClass("colour--light-green-400");
-		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
-	});
-	$( "#modal-add--pastoral" ).click(function() {
-		$( "#modal-box--title-div" ).addClass("colour--orange-200 mdl-color-text--grey-800");
-		$( "#modal-box--button-save" ).addClass("colour--orange-400");
-		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
-	});
-	$( "#modal-add--curriculum" ).click(function() {
-		$( "#modal-box--title-div" ).addClass("colour--red-200 mdl-color-text--white");
-		$( "#modal-box--button-save" ).addClass("colour--red-400");
-		$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
-	});
 	$( "#modal-box--buton-close" ).click(function() {
 		$.modal.close();
 		$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
