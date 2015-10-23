@@ -131,7 +131,20 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</ul>
 		</div>
 		<div class="mdl-card__supporting-text">
-			Student details.
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--3-col">
+					Year Group: <?php echo getMeta("yearGroup", $studentMetaInformation); ?>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					House: <?php echo getMeta("house", $studentMetaInformation); ?>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					Form: <?php echo getMeta("form", $studentMetaInformation); ?>
+				</div>
+				<div class="mdl-cell mdl-cell--3-col">
+					Date of Birth: <?php echo getMeta("dob", $studentMetaInformation); ?>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
