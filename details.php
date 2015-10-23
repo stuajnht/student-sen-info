@@ -103,6 +103,7 @@ function setMeta($studentID, $databaseConnection) {
  *
  * @see setMeta
  * @param string $metaName The name of the meta informtaion that is being requested
+ * @param array $metaArray The array that holds the meta information
  * @returns string The value collected from the database
  */
 function getMeta($metaName, &$metaArray) {	
