@@ -170,7 +170,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	?>
 	<!-- <?php echo $panel['PanelTitle']; ?> -->
 	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="<?php echo $animationDelay; ?>s">
-		<div class="mdl-card__title mdl-color-text--grey-800 colour--purple-200">
+		<div class="mdl-card__title mdl-color-text--<?php echo $panel['TextColour']; ?> colour--<?php echo $panel['Colour']; ?>-200">
 			<h2 class="mdl-card__title-text"><?php echo $panel['PanelTitle']; ?></h2>
 			<div class="mdl-layout-spacer"></div>
 			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
