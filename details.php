@@ -163,10 +163,19 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	// The default animation delay for the first panel to be shown
 	$animationDelay = 0.2;
 
+	// Array to hold the panel names and colours, to be used for generating the modal
+	$panelData = array(array());
+
 	if (dbSelectCountRows($queryResultPanels) > 0) {
 		foreach (dbSelectGetRows($queryResultPanels) as $panel) {
 			// Increasing the delay in the panels being animated in
 			$animationDelay += 0.1;
+			
+			// Filling in the panel data array
+			$panelData[$panel['PanelID'] - 1]['panelTitle'] = $panel['PanelTitle'];
+			$panelData[$panel['PanelID'] - 1]['colour'] = $panel['Colour'];
+			$panelData[$panel['PanelID'] - 1]['textColour'] = $panel['TextColour'];
+			$panelData[$panel['PanelID'] - 1]['panelMenuID'] = strtolower(str_replace(" ", "-", $panel['PanelTitle']));
 	?>
 	<!-- <?php echo $panel['PanelTitle']; ?> -->
 	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="<?php echo $animationDelay; ?>s">
