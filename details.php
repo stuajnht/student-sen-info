@@ -210,10 +210,14 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 					
 					if (dbSelectCountRows($queryResultMessages) > 0) {
 						foreach (dbSelectGetRows($queryResultMessages) as $message) {
+							// Getting the name of the staff member who wrote the comment
+							$sqlStaffMember = "SELECT * FROM `sen_info`.`tbl_staff` WHERE (StaffUsername = '".$message['StaffUsername']."')";
+							$queryResultStaffMember = dbSelect($sqlStaffMember, $databaseConnection);
+							$staffMember = dbSelectGetRows($queryResultStaffMember);
 					?>
 					<tr>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
-						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
+						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
 					</tr>
 					<?php
