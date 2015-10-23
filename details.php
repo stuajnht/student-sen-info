@@ -202,21 +202,25 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 					</tr>
 				</thead>
 				<tbody>
+					<?php
+					// Generating a list of messages relevant to this panel and student
+					// and displaying them for the user to see and select from
+					$sqlMessages = "SELECT * FROM `sen_info`.`tbl_messages` WHERE ((PanelID = ".$panel['PanelID'].") AND (StudentID = ".$_POST['student'].") AND (MessageStatus = 0)) ORDER BY MessageDate DESC";
+					$queryResultMessages = dbSelect($sqlMessages, $databaseConnection);
+					
+					if (dbSelectCountRows($queryResultMessages) > 0) {
+						foreach (dbSelectGetRows($queryResultMessages) as $message) {
+					?>
 					<tr>
-						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
+						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
 						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
 					</tr>
-					<tr>
-						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
-						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
-						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
-					</tr>
-					<tr>
-						<td class="mdl-data-table__cell--non-numeric">Test Message</td>
-						<td class="mdl-data-table__cell--non-numeric">J. Smith</td>
-						<td class="mdl-data-table__cell--non-numeric">2015-13-32</td>
-					</tr>
+					<?php
+					// End of messages foreach and if statements
+						}
+					}
+					?>
 				</tbody>
 			</table>
 		</div>
