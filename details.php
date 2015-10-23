@@ -17,17 +17,109 @@
  *
  * @author Jonathan Hart
  */
+
+// Setting up the define RUNNING_FROM, so it is known if the website is being
+// accessed in the correct manner
+define('RUNNING_FROM', 'ajax');
+
+// Checking to see if the config.php file exists
+if (!file_exists('./config.php')) {
+	// The config file wasn't found, so quit with an error message
+	die('<h2>The config file was not found. Contact your network admin.</h2>');
+}
+
+// Getting any settings from the config file
+require('./config.php');
+
+// Loading the functions file
+require('./functions.php');
+
 /*
  * The individual student details template page, which is filled in via AJAX
  *
  * This file holds the main template for the details of the student, with most
  * of the information being filled in through AJAX calls
  */
+
+/**
+ * Sets meta information about the student
+ *
+ * Collects any meta information for the student from the meta database table, so that it can
+ * be shown on the box at the top of the window. This information is stored in an array, which
+ * can be accessed as and when by the getMeta function
+ *
+ * @see getMeta
+ * @param int $studentID The ID of the student passed to this file
+ * @param mixed $databaseConnection A link to the current database connection
+ * @returns array An array of student meta information
+ */
+function setMeta($studentID, $databaseConnection) {
+	// Array to hold the information about the student, which is returned when the function ends
+	$metaInformation = array();
+	
+	// Making sure that there is an ID for the student passed
+	if (!empty($studentID)) {
+		// Sanitising the query
+		$searchQuery = $databaseConnection->real_escape_string($studentID);
+		
+		// Getting the name of the student
+		$sqlStudentName = "SELECT StudentForename, StudentSurname FROM `sen_info`.`tbl_students` WHERE (studentID = $studentID)";
+		$queryResultStudentName = dbSelect($sqlStudentName, $databaseConnection);
+		
+		// Seeing if any results were found, and filling in the meta information array
+		if (dbSelectCountRows($queryResultStudentName) > 0) {
+			foreach (dbSelectGetRows($queryResultStudentName) as $row) {
+				$metaInformation["studentForename"] = $row['StudentForename'];
+				$metaInformation["studentSurname"] = $row['StudentSurname'];
+			}
+		}
+		
+		// Getting additional meta information about the student
+		$sqlStudentMeta = "SELECT * FROM `sen_info`.`tbl_student_meta` WHERE (studentID = $studentID)";
+		$queryResultStudentMeta = dbSelect($sqlStudentMeta, $databaseConnection);
+		
+		// Seeing if any results were found, and filling in the meta information array
+		if (dbSelectCountRows($queryResultStudentMeta) > 0) {
+			foreach (dbSelectGetRows($queryResultStudentMeta) as $row) {
+				$metaInformation["yearGroup"] = $row['YearGroup'];
+				$metaInformation["house"] = $row['House'];
+				$metaInformation["form"] = $row['Form'];
+				$metaInformation["dob"] = $row['DoB'];
+				$metaInformation["comment"] = $row['Comment'];
+				// Note: Any additional rows added to the meta table should be added here
+			}
+		}
+	}
+	
+	// Return any meta information that has been collected
+	return $metaInformation;
+}
+
+/**
+ * Gets the value stored for the meta information about a student
+ *
+ * Returns a string with the value collected from the database about the current
+ * student, which was created with setMeta
+ *
+ * @see setMeta
+ * @param string $metaName The name of the meta informtaion that is being requested
+ * @returns string The value collected from the database
+ */
+function getMeta($metaName, &$metaArray) {	
+	// Returning the value from the array
+	return $metaArray[0][$metaName];
+}
+
+// Connecting to the database and saving the connection to it for use later
+$databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
+
+// Array to hold the meta information collected about the student
+$studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 ?><div class="mdl-grid wow-overflow-hidden">
 	<!-- Student Details -->
 	<div class="mdl-cell mdl-card mdl-cell--12-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp">
 		<div class="mdl-card__title mdl-color--accent mdl-color-text--white">
-			<h2 class="mdl-card__title-text">Student Name</h2>
+			<h2 class="mdl-card__title-text"><?php echo getMeta("studentForename", $studentMetaInformation) . ' ' . getMeta("studentSurname", $studentMetaInformation); ?></h2>
 			<div class="mdl-layout-spacer"></div>
 			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-student-details">
 				<i class="material-icons">more_vert</i>
