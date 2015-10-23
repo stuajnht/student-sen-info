@@ -149,16 +149,30 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	</div>
 </div>
 <div class="mdl-grid wow-overflow-hidden">
-	<!-- SEN Infomation -->
+	<?php
+	/**
+	 * Generating the panels that are shown on the page, which are pulled from the
+	 * database
+	 */
+
+	// Loading the panels that are needed to be shown, and in what order they should
+	// be displayed
+	$sqlPanels = "SELECT * FROM `sen_info`.`tbl_panels` WHERE (PanelHidden = 0) ORDER BY DisplayOrder";
+	$queryResultPanels = dbSelect($sqlPanels, $databaseConnection);
+
+	if (dbSelectCountRows($queryResultPanels) > 0) {
+		foreach (dbSelectGetRows($queryResultPanels) as $panel) {
+	?>
+	<!-- <?php echo $panel['PanelTitle']; ?> -->
 	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.3s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--purple-200">
-			<h2 class="mdl-card__title-text">SEN Info</h2>
+			<h2 class="mdl-card__title-text"><?php echo $panel['PanelTitle']; ?></h2>
 			<div class="mdl-layout-spacer"></div>
-			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-sen-info">
+			<button class="mdl-button mdl-js-button mdl-button--icon" id="menu-<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
 				<i class="material-icons">more_vert</i>
 			</button>
-			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-sen-info">
-				<li class="mdl-menu__item" id="modal-add--sen-info"><i class="material-icons">add</i> Add</li>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
+				<li class="mdl-menu__item" id="modal-add--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>"><i class="material-icons">add</i> Add</li>
 				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
 				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
@@ -193,6 +207,11 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</table>
 		</div>
 	</div>
+	<?php
+	// End of panel generation loop and if statement
+		}
+	}
+	?>
 	<!-- Key Worker -->
 	<div class="mdl-cell mdl-card mdl-cell--6-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 wow fadeInUp" data-wow-delay="0.4s">
 		<div class="mdl-card__title mdl-color-text--grey-800 colour--light-green-200">
