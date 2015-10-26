@@ -281,6 +281,19 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").each(function() {
 				complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> += $(this).attr('id') + ',';
 			});
+			// Marking all selected messages as complete
+			var markComplete<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = $.post( 'details-complete.php', { messages: complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> } );
+			
+			// Updating the relevant table rows
+			markComplete<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.done(function( data ) {
+				if (data == 'success') {
+					$.each(complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.split(','), function(index, trID) {
+						$('#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr#'+trID).remove();
+					});
+				}
+				// Updating the DOM so that all MDL elements get updated
+				componentHandler.upgradeDom();
+			});
 		});
 	<?php
 	// End foreach loop to generate the panel add button code
