@@ -44,4 +44,27 @@ require('./functions.php');
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
+// Getting the message ID's passed. If there isn't anything, then we can just
+// return 'empty'
+if (isset($_POST['messages'])) {
+	// Sanitising the query
+    $fullMessageString = $databaseConnection->real_escape_string($_POST['messages']);
+	
+	/**
+	 * Splitting the passed message string into a panel/message array, so that the individual messages
+	 * can be marked as complete.
+	 */
+	// Breaking apart each panel/message from the full string passed to this page
+	$fullPanelMessages = explode(',', $fullMessageString);
+	
+	// Splitting into individual panel/message arrays
+	foreach ($fullPanelMessages as $panelMessages) {
+		$panelMessagesList = explode('-', $panelMessages);
+	}
+} else {
+	echo 'empty';
+}
+
+// Closing the connection to the database
+dbClose($databaseConnection);
 ?>

@@ -216,7 +216,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 							$queryResultStaffMember = dbSelect($sqlStaffMember, $databaseConnection);
 							$staffMember = dbSelectGetRows($queryResultStaffMember);
 					?>
-					<tr id="<?php echo 'panel-'.$panel['PanelID'].'--message-'.$message['MessageID']; ?>">
+					<tr id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID']; ?>">
 						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
@@ -291,6 +291,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 						$('#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr#'+trID).remove();
 					});
 				}
+				// Emptying the list of selected table rows
+				complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
 				// Updating the DOM so that all MDL elements get updated
 				componentHandler.upgradeDom();
 			});
