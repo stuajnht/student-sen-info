@@ -172,6 +172,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$animationDelay += 0.1;
 			
 			// Filling in the panel data array
+			$panelData[$panel['PanelID'] - 1]['panelID'] = $panel['PanelID'];
 			$panelData[$panel['PanelID'] - 1]['panelTitle'] = $panel['PanelTitle'];
 			$panelData[$panel['PanelID'] - 1]['colour'] = $panel['Colour'];
 			$panelData[$panel['PanelID'] - 1]['textColour'] = $panel['TextColour'];
