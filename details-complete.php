@@ -59,7 +59,12 @@ if (isset($_POST['messages'])) {
 	
 	// Splitting into individual panel/message arrays
 	foreach ($fullPanelMessages as $panelMessages) {
-		$panelMessagesList = explode('-', $panelMessages);
+		// Ignoring any blank array values (which should be the last one as there
+		// is a trailing comma)
+		if ($panelMessages != '') {
+			// Getting the ID of the message, which will be the last number after the last underscore
+			$messageID = substr($panelMessages, strrpos($panelMessages, '_') + 1);
+		}
 	}
 } else {
 	echo 'empty';
