@@ -194,7 +194,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</ul>
 		</div>
 		<div class="mdl-card__supporting-text supporting-text-table-container">
-			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table">
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table" id="table--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
 				<thead>
 					<tr>
 						<th class="mdl-data-table__cell--non-numeric">Title</th>
