@@ -85,6 +85,29 @@ function dbSelect($sql, $connection) {
 }
 
 /**
+ * All database UPDATE queries should be passed through here
+ *
+ * The relevant page should generate a fully formatted and sanitised
+ * SQL update query, which is then executed by this function. The number
+ * of affected rows can then be accessed via dbAffectedRows
+ *
+ * @see dbAffectedRows
+ * @param string $sql The full sanitised SQL query
+ * @param mixed $connection The connection to the database
+ * @return mixed An object to the SQL result, or null if it failed
+ */
+function dbUpdate($sql, $connection) {
+	$updateResult = $connection->query($sql);
+	
+	if ($updateResult === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $connection->error, E_USER_ERROR);
+		return null;
+	} else {
+		return $updateResult;
+	}
+}
+
+/**
  * Counts the number of rows returned from the database SELECT query
  *
  * @see dbSelect
@@ -131,5 +154,16 @@ function dbSelectGetRows($queryResult) {
 	}
 	
 	return $allRows;
+}
+
+/**
+ * Gets the number of rows that have been affected from an UPDATE or DELETE query
+ *
+ * @see dbUpdate
+ * @param mixed $queryResult The object that holds the results of a SQL query
+ * @return int The number of rows that have been affected
+ */
+function dbAffectedRows($queryResult) {
+	return $queryResult->affected_rows;
 }
 ?>
