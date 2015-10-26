@@ -215,7 +215,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 							$queryResultStaffMember = dbSelect($sqlStaffMember, $databaseConnection);
 							$staffMember = dbSelectGetRows($queryResultStaffMember);
 					?>
-					<tr>
+					<tr id="<?php echo 'panel-'.$panel['PanelID'].'--message-'.$message['MessageID']; ?>">
 						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
