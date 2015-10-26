@@ -265,8 +265,9 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 </div>
 <script>
 	<?php
-	// Loading the values from the panelData array, so that the 'add' buttons on the
-	// panels display the correct modal box information
+	// Loading the values from the panelData array, so that the buttons on the
+	// panels  menu either display the correct modal box information or perform
+	// their relavant actions
 	foreach($panelData as $panelValues) {
 	?>
 		$( "#modal-add--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
@@ -274,6 +275,12 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
 			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
 			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+		});
+		var complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
+		$( "#modal-complete--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
+			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").each(function() {
+				complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> += $(this).attr('id') + ',';
+			});
 		});
 	<?php
 	// End foreach loop to generate the panel add button code
