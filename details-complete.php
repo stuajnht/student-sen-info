@@ -64,8 +64,16 @@ if (isset($_POST['messages'])) {
 		if ($panelMessages != '') {
 			// Getting the ID of the message, which will be the last number after the last underscore
 			$messageID = substr($panelMessages, strrpos($panelMessages, '_') + 1);
+			
+			// Generating the update SQL query
+			$sql = "UPDATE `sen_info`.`tbl_messages` SET MessageStatus=1 WHERE MessageID=" . $messageID;
+			$updateResult = dbUpdate($sql, $databaseConnection);
 		}
 	}
+		
+	// Sending back 'success' so that the calling function knows that it has completed
+	// marking the database rows as complete
+	echo 'success';
 } else {
 	echo 'empty';
 }
