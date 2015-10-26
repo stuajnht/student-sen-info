@@ -300,7 +300,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 		var delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
 		$( "#modal-delete--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
 			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").each(function() {
-				complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> += $(this).attr('id') + ',';
+				delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> += $(this).attr('id') + ',';
 			});
 			// Marking all selected messages as deleted
 			var markDeleted<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = $.post( 'details-delete.php', { messages: delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> } );
