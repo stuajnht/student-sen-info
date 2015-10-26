@@ -187,9 +187,9 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
 				<li class="mdl-menu__item" id="modal-add--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>"><i class="material-icons">add</i> Add</li>
-				<li class="mdl-menu__item"><i class="material-icons">done</i> Complete</li>
-				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
-				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
+				<li class="mdl-menu__item" id="modal-complete--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>"><i class="material-icons">done</i> Complete</li>
+				<li class="mdl-menu__item" id="modal-edit--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item" id="modal-delete--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>"><i class="material-icons">delete</i> Delete</li>
 			</ul>
 		</div>
 		<div class="mdl-card__supporting-text supporting-text-table-container">
