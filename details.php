@@ -297,8 +297,29 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				componentHandler.upgradeDom();
 			});
 		});
+		var delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
+		$( "#modal-delete--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
+			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").each(function() {
+				complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> += $(this).attr('id') + ',';
+			});
+			// Marking all selected messages as deleted
+			var markDeleted<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = $.post( 'details-delete.php', { messages: delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> } );
+			
+			// Updating the relevant table rows
+			markDeleted<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.done(function( data ) {
+				if (data == 'success') {
+					$.each(delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.split(','), function(index, trID) {
+						$('#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr#'+trID).remove();
+					});
+				}
+				// Emptying the list of selected table rows
+				delete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
+				// Updating the DOM so that all MDL elements get updated
+				componentHandler.upgradeDom();
+			});
+		});
 	<?php
-	// End foreach loop to generate the panel add button code
+	// End foreach loop to generate the panel menu buttons code
 	}
 	?>
 	$( "#modal-box--buton-close" ).click(function() {
