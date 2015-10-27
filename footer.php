@@ -111,6 +111,9 @@
 					// Displaying the search page in the div
 					getSearchPage.done(function( data ) {
 						$('.mdl-layout__content').html(data);
+						// Showing the search and menu buttons
+						$('#button--show-search').show();
+						$('#hdrbtn').show();
 						// Updating the DOM so that all MDL elements get updated
 						componentHandler.upgradeDom();
 					});
@@ -143,6 +146,9 @@
 					// Displaying the search page in the div
 					getSearchPage.done(function( data ) {
 						$('.mdl-layout__content').html(data);
+						// Showing the search and menu buttons
+						$('#button--show-search').show();
+						$('#hdrbtn').show();
 						// Updating the DOM so that all MDL elements get updated
 						componentHandler.upgradeDom();
 					});

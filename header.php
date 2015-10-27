@@ -46,10 +46,10 @@
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">SEN Info</span>
           <div class="mdl-layout-spacer"></div>
-          <button class="mdl-button mdl-js-button mdl-button--icon" id="button--show-search">
+          <button class="mdl-button mdl-js-button mdl-button--icon" id="button--show-search" style="display: none;">
 			  <i class="material-icons">search</i>
 			</button>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn" style="display: none;">
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
