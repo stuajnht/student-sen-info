@@ -338,6 +338,10 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			// by the details-add.php file
 			$(data).prependTo("#table--"+ $('#modal-panel-menu-id').val() +" > tbody");
 			
+			// Clearing the modal title and message fields
+			$('#modal-title').val('');
+			$('#modal-message').val('');
+			
 			// Closing the modal
 			$.modal.close();
 			$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
