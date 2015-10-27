@@ -74,6 +74,12 @@ function setSessionInformation($username, $databaseConnection) {
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
+// Removing any expired sessions, to prevent the ability to log in with them
+// Converting the expires time into a MySQL datetime format
+$timeNow = date("Y-m-d H:i:s");
+$sqlDelete = "DELETE FROM `sen_info`.`tbl_sessions` WHERE `Expires`<'$timeNow';";
+dbDelete($sqlDelete, $databaseConnection);
+
 // Seeing if we are using a cookie to log in or a username and password
 if (isset($_POST['cookie'])) {
 	// Sanitising the cookie
