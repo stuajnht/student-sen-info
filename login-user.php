@@ -80,7 +80,14 @@ if (isset($_POST['cookie'])) {
 		
 		// Checking to see if there were any rows returned
 		if (dbSelectCountRows($queryResult) > 0) {
+			// Checking to see if the password typed matches what is in the database
+			$tableRows = dbSelectGetRows($queryResult);
 			
+			if (password_verify($password, $tableRows[0]['StaffPassword'])) {
+				echo 'success';
+			} else {
+				echo 'The password is incorrect';
+			}
 		} else {
 			// The username doesn't exist, so let the user know
 			echo "The username is incorrect";
