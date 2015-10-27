@@ -27,10 +27,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/js/jquery.animsition.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/simplemodal/1.4.4/jquery.simplemodal.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>new WOW().init();</script>
 <script>
-	// Controlling the search form being shown
 	$(document).ready(function(){
+		// Controlling the search form being shown
 		$("#button--show-search").click(function() {
 			$('.mdl-layout__content').addClass('animated fadeOut');
 			$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -63,6 +64,9 @@
 				xmlhttp.send();
 			});
 		});
+		
+		// Attempting to log in the user when they open the site for the first time
+		loginUser(true, false);
 	});
 </script>
 <script>
@@ -84,6 +88,45 @@
 				componentHandler.upgradeDom();
 			});
 		});
+	}
+</script>
+<script>
+	// Attempts to log in the user with the details from the login page or the cookie
+	// @param usingCookie bool Should we try to log the user on with the session cookie
+	// @param usingForm bool Has the user pressed the log in button from the login page
+	function loginUser(usingCookie, usingForm) {
+		// Attempt to log in with the cookie value first, otherwise display the login
+		// page and wait to call this function again when the user presses the login button
+		if (usingCookie) {
+			// Sending off an AJAX request with the current session cookie
+			var checkLogin = $.post( 'login-user.php', { cookie: $.cookie("sessionID") });
+			
+			// Seeing if we are able to log the user in successfully and open the search page
+			checkLogin.done(function( data ) {
+				if (data == 'success') {
+					// The user has successfully been able to log in, so show the search page
+					// Load the details page with the student information
+					var getSearchPage = $.post( 'search.php' );
+
+					// Displaying the search page in the div
+					getSearchPage.done(function( data ) {
+						$('.mdl-layout__content').html(data);
+						// Updating the DOM so that all MDL elements get updated
+						componentHandler.upgradeDom();
+					});
+				} else {
+					// We haven't been able to log the user in from the cookie, so load the login page
+					var getLoginPage = $.post( 'login.php' );
+
+					// Displaying the login page in the div
+					getLoginPage.done(function( data ) {
+						$('.mdl-layout__content').html(data);
+						// Updating the DOM so that all MDL elements get updated
+						componentHandler.upgradeDom();
+					});
+				}
+			});
+		}
 	}
 </script>
 </body>
