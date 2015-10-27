@@ -69,7 +69,13 @@ if (isset($_POST['cookie'])) {
 		}
 	}
 } else {
-	
+	// Seeing if there wasn't a username and/or password passed to this file
+	if (!empty($_POST['username']) && !empty($_POST['password'])) {
+		
+	} else {
+		// There was no username and/or password entered, so let the user know
+		echo "The username and / or password is empty";
+	}
 }
 
 // Closing the connection to the database
