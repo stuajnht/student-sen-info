@@ -46,7 +46,31 @@ require('./functions.php');
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
-
+// Seeing if we are using a cookie to log in or a username and password
+if (isset($_POST['cookie'])) {
+	// Sanitising the cookie
+    $cookie = $databaseConnection->real_escape_string($_POST['cookie']);
+	
+	// Generating the search query and running it
+	// Note: searchTerms[0] should be the forename, searchTerms[1] the surname
+	$sql = "SELECT * FROM `sen_info`.`tbl_sessions` WHERE (SessionID = '$cookie')";
+	$queryResult = dbSelect($sql, $databaseConnection);
+	
+	// Seeing if any results were found
+	if (dbSelectCountRows($queryResult) > 0) {
+		// Checking to make sure that the session hasn't expired
+		$tableRows = dbSelectGetRows($queryResult);
+		
+		foreach ($tableRows as $row) {
+			if ($row['Expires'] > date("Y-m-d H:i:s")) {
+				// We can successfully log the user in
+				echo "success";
+			}
+		}
+	}
+} else {
+	
+}
 
 // Closing the connection to the database
 dbClose($databaseConnection);
