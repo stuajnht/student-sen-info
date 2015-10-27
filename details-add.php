@@ -70,7 +70,7 @@ $staffSurname = $tableRows[0]['StaffSurname'];
 // Adding the message title to tbl_messages
 $sqlInsertMessage = "INSERT INTO `sen_info`.`tbl_messages` (`MessageTitle`, `StudentID`, `StaffUsername`, `MessageDate`, `MessageStatus`, `PanelID`) VALUES ('$messageTitle', $studentID, '$staffUsername', '$messagePosted', 0, $panelID);";
 $insertResultMessage = dbInsert($sqlInsertMessage, $databaseConnection);
-$messageThreadID = dbInsertID($insertResultMessage);
+$messageThreadID = dbInsertID($databaseConnection);
 
 // Adding the comment to tbl_comments
 $sqlInsertComment = "INSERT INTO `sen_info`.`tbl_comments` (`Comment`, `MessageID`, `StaffUsername`, `CommentDate`) VALUES ('$messageBody', $messageThreadID, '$staffUsername', '$messagePosted');";
