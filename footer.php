@@ -127,6 +127,34 @@
 				}
 			});
 		}
+		
+		// Attempt to log the user in with the information from the login form
+		if (usingForm) {
+			// Sending off an AJAX request with the users login details
+			var checkLogin = $.post( 'login-user.php', { username: $('#username').val(), password: $('#password').val() });
+			
+			// Seeing if we are able to log the user in successfully and open the search page
+			checkLogin.done(function( data ) {
+				if (data == 'success') {
+					// The user has successfully been able to log in, so show the search page
+					// Load the details page with the student information
+					var getSearchPage = $.post( 'search.php' );
+
+					// Displaying the search page in the div
+					getSearchPage.done(function( data ) {
+						$('.mdl-layout__content').html(data);
+						// Updating the DOM so that all MDL elements get updated
+						componentHandler.upgradeDom();
+					});
+				} else {
+					// We haven't been able to log the user in with the details they passed
+					// so let them know there was a problem
+					$('#login-message').text(data);
+					// Updating the DOM so that all MDL elements get updated
+					componentHandler.upgradeDom();
+				}
+			});
+		}
 	}
 </script>
 </body>
