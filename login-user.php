@@ -65,7 +65,8 @@ function setSessionInformation($username, $databaseConnection) {
 	// Updating the database with this information, so the user
 	// can log in from the cookie, and also checks to make sure the
 	// user should be able to access the pages complete successfully
-	
+	$sql = "INSERT INTO `sen_info`.`tbl_sessions` (`SessionID`, `StaffUsername`, `Expires`, `IPAddress`) VALUES ('$sessionID', '$username', '$dbExpirary', '".$_SERVER['REMOTE_ADDR']."');";
+	$insertResult = dbSelect($sql, $databaseConnection);
 	
 	return $sessionID;
 }
@@ -108,11 +109,11 @@ if (isset($_POST['cookie'])) {
 		// Checking to see if there were any rows returned
 		if (dbSelectCountRows($queryResult) > 0) {
 			// Checking to see if the password typed matches what is in the database
-			$tableRows = dbSelectGetRows($queryResult, $databaseConnection);
+			$tableRows = dbSelectGetRows($queryResult);
 			
 			if (password_verify($password, $tableRows[0]['StaffPassword'])) {
 				// Updating the sessions table and cookie
-				setSessionInformation($username);
+				setSessionInformation($username, $databaseConnection);
 				echo 'success';
 			} else {
 				echo 'The password is incorrect';

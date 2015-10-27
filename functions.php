@@ -122,7 +122,7 @@ function dbUpdate($sql, $connection) {
  * @return mixed An object to the SQL result, or null if it failed
  */
 function dbInsert($sql, $connection) {
-	$insertResult = $connection->query($sql)
+	$insertResult = $connection->query($sql);
 	
 	if ($insertResult === false) {
 		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $connection->error, E_USER_ERROR);
