@@ -52,7 +52,6 @@ if (isset($_POST['cookie'])) {
     $cookie = $databaseConnection->real_escape_string($_POST['cookie']);
 	
 	// Generating the search query and running it
-	// Note: searchTerms[0] should be the forename, searchTerms[1] the surname
 	$sql = "SELECT * FROM `sen_info`.`tbl_sessions` WHERE (SessionID = '$cookie')";
 	$queryResult = dbSelect($sql, $databaseConnection);
 	
@@ -71,7 +70,21 @@ if (isset($_POST['cookie'])) {
 } else {
 	// Seeing if there wasn't a username and/or password passed to this file
 	if (!empty($_POST['username']) && !empty($_POST['password'])) {
+		// Sanitising the username and password
+		$username = $databaseConnection->real_escape_string($_POST['username']);
+		$password = $databaseConnection->real_escape_string($_POST['password']);
 		
+		// Generating the search query and running it
+		$sql = "SELECT StaffPassword FROM `sen_info`.`tbl_staff` WHERE (StaffUsername = '$username')";
+		$queryResult = dbSelect($sql, $databaseConnection);
+		
+		// Checking to see if there were any rows returned
+		if (dbSelectCountRows($queryResult) > 0) {
+			
+		} else {
+			// The username doesn't exist, so let the user know
+			echo "The username is incorrect";
+		}
 	} else {
 		// There was no username and/or password entered, so let the user know
 		echo "The username and / or password is empty";
