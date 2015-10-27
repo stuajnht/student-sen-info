@@ -133,6 +133,25 @@ function dbInsert($sql, $connection) {
 }
 
 /**
+ * All database DELETE queries should be passed through here
+ *
+ * The relevant page should generate a fully formatted and sanitised
+ * SQL delete query, which is then executed by this function. The number
+ * of affected rows can then be accessed via dbAffectedRows
+ *
+ * @see dbAffectedRows
+ * @param string $sql The full sanitised SQL query
+ * @param mixed $connection The connection to the database
+ */
+function dbDelete($sql, $connection) {
+	$deleteResult = $connection->query($sql);
+	
+	if ($deleteResult === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $connection->error, E_USER_ERROR);
+	}
+}
+
+/**
  * Counts the number of rows returned from the database SELECT query
  *
  * @see dbSelect
@@ -186,6 +205,7 @@ function dbSelectGetRows($queryResult) {
  *
  * @see dbUpdate
  * @see dbInsert
+ * @see dbDelete
  * @param mixed $queryResult The object that holds the results of a SQL query
  * @return int The number of rows that have been affected
  */
