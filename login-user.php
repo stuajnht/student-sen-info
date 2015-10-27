@@ -43,6 +43,33 @@ require('./config.php');
 // Loading the functions file
 require('./functions.php');
 
+/**
+ * Sets the information about the current login session in the database
+ * and the cookie sent to the client browser
+ *
+ * @param string $username The username of the current logged in user
+ * @param object $databaseConnection The connection to the database
+ * @returns string The session ID that has been created
+ */
+function setSessionInformation($username, $databaseConnection) {
+	// Creating a unique session ID and expiration date
+	$sessionID = bin2hex(uniqid('', true));
+	$expires = time()+60*60*24;
+	
+	// Converting the expires time into a MySQL datetime format
+	$dbExpirary = date("Y-m-d H:i:s", $expires);
+	
+	// Setting the cookie
+	setcookie('sessionID', $sessionID, $expires, '/');
+	
+	// Updating the database with this information, so the user
+	// can log in from the cookie, and also checks to make sure the
+	// user should be able to access the pages complete successfully
+	
+	
+	return $sessionID;
+}
+
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
@@ -81,9 +108,11 @@ if (isset($_POST['cookie'])) {
 		// Checking to see if there were any rows returned
 		if (dbSelectCountRows($queryResult) > 0) {
 			// Checking to see if the password typed matches what is in the database
-			$tableRows = dbSelectGetRows($queryResult);
+			$tableRows = dbSelectGetRows($queryResult, $databaseConnection);
 			
 			if (password_verify($password, $tableRows[0]['StaffPassword'])) {
+				// Updating the sessions table and cookie
+				setSessionInformation($username);
 				echo 'success';
 			} else {
 				echo 'The password is incorrect';
