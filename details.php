@@ -60,7 +60,8 @@ function setMeta($studentID, $databaseConnection) {
 	// Making sure that there is an ID for the student passed
 	if (!empty($studentID)) {
 		// Sanitising the query
-		$searchQuery = $databaseConnection->real_escape_string($studentID);
+		$studentID = $databaseConnection->real_escape_string($studentID);
+		$metaInformation["studentID"] = $studentID;
 		
 		// Getting the name of the student
 		$sqlStudentName = "SELECT StudentForename, StudentSurname FROM `sen_info`.`tbl_students` WHERE (studentID = $studentID)";
