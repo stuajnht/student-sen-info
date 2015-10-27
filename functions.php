@@ -108,6 +108,31 @@ function dbUpdate($sql, $connection) {
 }
 
 /**
+ * All database INSERT queries should be passed through here
+ *
+ * The relevant page should generate a fully formatted and sanitised
+ * SQL insert query, which is then executed by this function. The insert
+ * ID can be accessed via dbInsertID and the number of rows affected via
+ * dbAffectedRows
+ *
+ * @see dbAffectedRows
+ * @see dbInsertID
+ * @param string $sql The full sanitised SQL query
+ * @param mixed $connection The connection to the database
+ * @return mixed An object to the SQL result, or null if it failed
+ */
+function dbInsert($sql, $connection) {
+	$insertResult = $connection->query($sql)
+	
+	if ($insertResult === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $connection->error, E_USER_ERROR);
+		return null;
+	} else {
+		return $insertResult;
+	}
+}
+
+/**
  * Counts the number of rows returned from the database SELECT query
  *
  * @see dbSelect
@@ -157,13 +182,25 @@ function dbSelectGetRows($queryResult) {
 }
 
 /**
- * Gets the number of rows that have been affected from an UPDATE or DELETE query
+ * Gets the number of rows that have been affected from an UPDATE, INSERT or DELETE query
  *
  * @see dbUpdate
+ * @see dbInsert
  * @param mixed $queryResult The object that holds the results of a SQL query
  * @return int The number of rows that have been affected
  */
 function dbAffectedRows($queryResult) {
 	return $queryResult->affected_rows;
+}
+
+/**
+ * Gets the insert ID of the last insert SQL operation
+ *
+ * @see dbInsert
+ * @param mixed $insertResult The object that holds the reqults of a SQL query
+ * @return int The insert ID from the database
+ */
+function dbInsertID($insertResult) {
+	return $insertResult->insert_id;
 }
 ?>
