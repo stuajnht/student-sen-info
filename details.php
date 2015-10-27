@@ -255,6 +255,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</div>
 			<input type="hidden" name="modal-student-id" id="modal-student-id" value="<?php echo getMeta("studentID", $studentMetaInformation); ?>">
 			<input type="hidden" name="modal-panel-id" id="modal-panel-id" value="">
+			<input type="hidden" name="modal-panel-id" id="modal-panel-menu-id" value="">
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
@@ -278,6 +279,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
 			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
 			$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
+			$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
 			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 		});
 		var complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
@@ -326,6 +328,24 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	// End foreach loop to generate the panel menu buttons code
 	}
 	?>
+	$( "#modal-box--button-save" ).click(function() {
+		// Posting the new message about the student
+		var addNewMessage = $.post( 'details-add.php', { cookie: $.cookie("sessionID"), title: $('#modal-title').val(), message: $('#modal-message').val(), studentID: $('#modal-student-id').val(), panelID: $('#modal-panel-id').val() } );
+		
+		// Updating the relevant tables with the new message
+		addNewMessage.done(function( data ) {
+			// Adding the new row to the top of the table. The HTML has been generated
+			// by the details-add.php file
+			$(data).prependTo("#table--"+ $('#modal-panel-menu-id').val() +" > tbody");
+			
+			// Closing the modal
+			$.modal.close();
+			$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
+			$( "#modal-box--button-save" ).removeClass("colour--purple-400 colour--light-green-400 colour--orange-400 colour--red-400");
+			// Updating the DOM so that all MDL elements get updated
+			componentHandler.upgradeDom();
+		});
+	});
 	$( "#modal-box--buton-close" ).click(function() {
 		$.modal.close();
 		$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
