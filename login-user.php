@@ -66,7 +66,7 @@ function setSessionInformation($username, $databaseConnection) {
 	// can log in from the cookie, and also checks to make sure the
 	// user should be able to access the pages complete successfully
 	$sql = "INSERT INTO `sen_info`.`tbl_sessions` (`SessionID`, `StaffUsername`, `Expires`, `IPAddress`) VALUES ('$sessionID', '$username', '$dbExpirary', '".$_SERVER['REMOTE_ADDR']."');";
-	$insertResult = dbSelect($sql, $databaseConnection);
+	$insertResult = dbInsert($sql, $databaseConnection);
 	
 	return $sessionID;
 }
