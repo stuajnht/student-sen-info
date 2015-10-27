@@ -116,7 +116,7 @@
 					});
 				} else {
 					// We haven't been able to log the user in from the cookie, so load the login page
-					var getLoginPage = $.post( 'login.php' );
+					var getLoginPage = $.post( 'login.php', { runningFrom: 'ajax'} );
 
 					// Displaying the login page in the div
 					getLoginPage.done(function( data ) {

@@ -26,6 +26,13 @@
  * benefit of knowing who made what change.
  */
 
+// Checking to make sure that this page is only called from ajax calls
+if (isset($_POST['runningFrom'])) {
+	if ($_POST['runningFrom'] == 'ajax') {
+		define('RUNNING_FROM', 'ajax');
+	}
+}
+
 // Seeing if the script is being called from another webpage, or directly
 defined('RUNNING_FROM') || die('<h2>You cannot access this page directly.</h2>');
 
