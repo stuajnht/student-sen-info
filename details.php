@@ -253,6 +253,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>
 				<label class="mdl-textfield__label" for="modal-message">Message</label>
 			</div>
+			<input type="hidden" name="modal-student-id" id="modal-student-id" value="<?php echo getMeta("studentID", $studentMetaInformation); ?>">
+			<input type="hidden" name="modal-panel-id" id="modal-panel-id" value="">
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
@@ -275,6 +277,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-box--title-div" ).addClass("colour--<?php echo $panelValues['colour']; ?>-200 mdl-color-text--<?php echo $panelValues['textColour']; ?>");
 			$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
 			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
+			$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 		});
 		var complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
