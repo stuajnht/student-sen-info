@@ -78,6 +78,11 @@ $insertResultComment = dbInsert($sqlInsertComment, $databaseConnection);
 
 // Creating a new HTML table row to pass back to the calling AJAX function
 echo '<tr id="panel_'.$panelID.'-message_'.$messageThreadID.'">';
+echo '<td>';
+echo '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="row['.$messageThreadID.']">';
+echo '<input type="checkbox" id="row['.$messageThreadID.']" class="mdl-checkbox__input" />';
+echo '</label>';
+echo '</td>';
 echo '<td class="mdl-data-table__cell--non-numeric">'.$messageTitle.'</td>';
 echo '<td class="mdl-data-table__cell--non-numeric">'.substr($staffForename, 0, 1) . ". " . $staffSurname .'</td>';
 echo '<td class="mdl-data-table__cell--non-numeric">'.substr($messagePosted, 0, 10) .'</td>';

@@ -195,9 +195,14 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			</ul>
 		</div>
 		<div class="mdl-card__supporting-text supporting-text-table-container">
-			<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable supporting-text-table" id="table--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
+			<table class="mdl-data-table supporting-text-table" id="table--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
 				<thead>
 					<tr>
+						<th>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>">
+								<input type="checkbox" id="table-header--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>" class="mdl-checkbox__input" />
+							</label>
+						</th>
 						<th class="mdl-data-table__cell--non-numeric">Title</th>
 						<th class="mdl-data-table__cell--non-numeric">Staff</th>
 						<th class="mdl-data-table__cell--non-numeric">Date</th>
@@ -218,6 +223,11 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 							$staffMember = dbSelectGetRows($queryResultStaffMember);
 					?>
 					<tr id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID']; ?>">
+						<td>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="row[<?php echo $message['MessageID']; ?>]">
+								<input type="checkbox" id="row[<?php echo $message['MessageID']; ?>]" class="mdl-checkbox__input" />
+							</label>
+						</td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
@@ -324,6 +334,23 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				componentHandler.upgradeDom();
 			});
 		});
+		// Update for the MDL table, as the current function is being depricated:
+		// See: https://github.com/google/material-design-lite/wiki/Deprecations#automatic-selection-checkboxes
+		var table_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = document.querySelector('#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>');
+		var headerCheckbox_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = table_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.querySelector('thead .mdl-data-table__select input');
+		var headerCheckHandler_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = function(event) {
+			var boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = table_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.querySelectorAll('tbody .mdl-data-table__select');
+			if (event.target.checked) {
+				for (var i = 0, length = boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.length; i < length; i++) {
+					boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i].MaterialCheckbox.check();
+				}
+			} else {
+				for (var i = 0, length = boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.length; i < length; i++) {
+					boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i].MaterialCheckbox.uncheck();
+				}
+			}
+		};
+		headerCheckbox_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.addEventListener('change', headerCheckHandler_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>);
 	<?php
 	// End foreach loop to generate the panel menu buttons code
 	}
