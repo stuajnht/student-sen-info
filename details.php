@@ -357,6 +357,14 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	// End foreach loop to generate the panel menu buttons code
 	}
 	?>
+	$( ".mdl-checkbox__input" ).change(function() {
+		var $input = $( this );
+		if ($input.is( ":checked" )) {
+			$(this).parents("tr").addClass("is-selected");
+		} else {
+			$(this).parents("tr").removeClass("is-selected");
+		}
+	}).change();
 	$( "#modal-box--button-save" ).click(function() {
 		// Posting the new message about the student
 		var addNewMessage = $.post( 'details-add.php', { cookie: $.cookie("sessionID"), title: $('#modal-title').val(), message: $('#modal-message').val(), studentID: $('#modal-student-id').val(), panelID: $('#modal-panel-id').val() } );
