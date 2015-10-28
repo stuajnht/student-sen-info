@@ -343,10 +343,12 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			if (event.target.checked) {
 				for (var i = 0, length = boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.length; i < length; i++) {
 					boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i].MaterialCheckbox.check();
+					$(boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i]).parents("tr").addClass("is-selected");
 				}
 			} else {
 				for (var i = 0, length = boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.length; i < length; i++) {
 					boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i].MaterialCheckbox.uncheck();
+					$(boxes_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>[i]).parents("tr").removeClass("is-selected");
 				}
 			}
 		};
