@@ -357,6 +357,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	// End foreach loop to generate the panel menu buttons code
 	}
 	?>
+	// Setting all table checkboxes to modify the parent table row
+	// class, so that we know if the row is selected
 	$( ".mdl-checkbox__input" ).change(function() {
 		var $input = $( this );
 		if ($input.is( ":checked" )) {
@@ -374,6 +376,17 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			// Adding the new row to the top of the table. The HTML has been generated
 			// by the details-add.php file
 			$(data).prependTo("#table--"+ $('#modal-panel-menu-id').val() +" > tbody");
+			
+			// Allowing the newly added table row and checkbox to toggle
+			// the is-selected class of the row
+			$( ".mdl-checkbox__input" ).change(function() {
+				var $input = $( this );
+				if ($input.is( ":checked" )) {
+					$(this).parents("tr").addClass("is-selected");
+				} else {
+					$(this).parents("tr").removeClass("is-selected");
+				}
+			}).change();
 			
 			// Clearing the modal title and message fields
 			$('#modal-title').val('');
