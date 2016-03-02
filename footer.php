@@ -163,5 +163,29 @@
 		}
 	}
 </script>
+<script>
+	$(document).ready(function(){
+		// Controlling the login form being shown
+		$("#button--logout").click(function() {
+			// Remove the search form
+			$('.mdl-layout__content').addClass('animated fadeOut');
+			$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+				$('.mdl-layout__content').empty();
+				$('.mdl-layout__content').removeClass('animated fadeOut');
+			
+				// Load the login page with the cookie information to remove
+				// the session from the database
+				var getLoginView = $.post( 'login.php', { cookie: $.cookie("sessionID") } );
+			
+				// Displaying the student details in the div
+				getLoginView.done(function( data ) {
+					$('.mdl-layout__content').html(data);
+					// Updating the DOM so that all MDL elements get updated
+					componentHandler.upgradeDom();
+				});
+			});
+		});
+	});
+</script>
 </body>
 </html>

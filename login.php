@@ -36,6 +36,36 @@ if (isset($_POST['runningFrom'])) {
 // Seeing if the script is being called from another webpage, or directly
 defined('RUNNING_FROM') || die('<h2>You cannot access this page directly.</h2>');
 
+// Checking to see if the config.php file exists
+if (!file_exists('./config.php')) {
+	// The config file wasn't found, so quit with an error message
+	die('<h2>The config file was not found. Contact your network admin.</h2>');
+}
+
+// Getting any settings from the config file
+require('./config.php');
+
+// Loading the functions file
+require('./functions.php');
+
+// Seeing if we are using a cookie to log out the user,
+// or this is the first login from the user
+if (isset($_POST['cookie'])) {
+	// Connecting to the database and saving the connection to it for use later
+	$databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
+	
+	// Sanitising the cookie
+  $cookie = $databaseConnection->real_escape_string($_POST['cookie']);
+
+	// Removing any sessions, to prevent the ability to log in with them,
+	// as the user has requested them to be logged out
+	$sqlDelete = "DELETE FROM `sen_info`.`tbl_sessions` WHERE `SessionID`='$cookie';";
+	dbDelete($sqlDelete, $databaseConnection);
+	
+	// Closing the connection to the database
+	dbClose($databaseConnection);
+}
+
 ?><div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 	<div class="mdl-cell mdl-cell--4-col mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 login-cell wow fadeInUp">
