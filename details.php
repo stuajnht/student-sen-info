@@ -255,9 +255,12 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	</div>
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield" id="modal-textfield--title">
 				<input class="mdl-textfield__input" type="text" id="modal-title" autocomplete="off" />
 				<label class="mdl-textfield__label" for="modal-title">Title</label>
+			</div>
+			<div class="" id="modal-textfield--comments">
+				
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
 				<textarea class="mdl-textfield__input" type="text" rows= "10" id="modal-message" ></textarea>
@@ -290,6 +293,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
 			$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 			$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
+			$( '#modal-textfield--title' ).show();
+			$( '#modal-textfield--comments' ).hide();
 			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 		});
 		$( "#modal-view--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
@@ -299,6 +304,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				$( "#modal-box--title-text" ).text($(this).find("[id$=title]").html());
 				$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 				$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
+				$( '#modal-textfield--title' ).hide();
+				$( '#modal-textfield--comments' ).show();
 				$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 			});
 		});
