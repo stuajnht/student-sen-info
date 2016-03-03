@@ -175,7 +175,7 @@
 			
 				// Load the login page with the cookie information to remove
 				// the session from the database
-				var getLoginView = $.post( 'login.php', { cookie: $.cookie("sessionID") } );
+				var getLoginView = $.post( 'login.php', { runningFrom: 'ajax', cookie: $.cookie("sessionID") } );
 			
 				// Displaying the student details in the div
 				getLoginView.done(function( data ) {
