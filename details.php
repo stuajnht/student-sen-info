@@ -228,7 +228,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 								<input type="checkbox" id="row[<?php echo $message['MessageID']; ?>]" class="mdl-checkbox__input" />
 							</label>
 						</td>
-						<td class="mdl-data-table__cell--non-numeric"><?php echo $message['MessageTitle']; ?></td>
+						<td class="mdl-data-table__cell--non-numeric" id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID'].'-title'; ?>"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
 					</tr>
@@ -291,6 +291,16 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 			$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
 			$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+		});
+		$( "#modal-view--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
+			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").first(function() {
+				$( "#modal-box--title-div" ).addClass("colour--<?php echo $panelValues['colour']; ?>-200 mdl-color-text--<?php echo $panelValues['textColour']; ?>");
+				$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
+				$( "#modal-box--title-text" ).text($(this).find("[id$=title]"));
+				$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
+				$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
+				$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+			});
 		});
 		var complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
 		$( "#modal-complete--<?php echo $panelValues['panelMenuID']; ?>" ).click(function() {
