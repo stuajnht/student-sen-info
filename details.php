@@ -296,7 +296,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$("#table--<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?> tr.is-selected").each(function() {
 				$( "#modal-box--title-div" ).addClass("colour--<?php echo $panelValues['colour']; ?>-200 mdl-color-text--<?php echo $panelValues['textColour']; ?>");
 				$( "#modal-box--button-save" ).addClass("colour--<?php echo $panelValues['colour']; ?>-400");
-				$( "#modal-box--title-text" ).text($(this).find("[id$=title]"));
+				$( "#modal-box--title-text" ).text($(this).find("[id$=title]").html());
 				$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 				$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
 				$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
