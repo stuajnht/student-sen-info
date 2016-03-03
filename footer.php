@@ -172,6 +172,10 @@
 			$('.mdl-layout__content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 				$('.mdl-layout__content').empty();
 				$('.mdl-layout__content').removeClass('animated fadeOut');
+				
+				// Hiding the search and menu buttons
+				$('#button--show-search').hide();
+				$('#hdrbtn').hide();
 			
 				// Load the login page with the cookie information to remove
 				// the session from the database
