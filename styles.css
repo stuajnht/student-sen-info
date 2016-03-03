@@ -104,6 +104,9 @@ textarea {
 .mdl-data-table td .mdl-data-table__select {
 	top: 12px;
 }
+.data-table__cell-overflow-ellipsis {
+	text-overflow: ellipsis;
+}
 
 
 /* Details Page Information Card Colours */

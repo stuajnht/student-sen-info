@@ -228,7 +228,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 								<input type="checkbox" id="row[<?php echo $message['MessageID']; ?>]" class="mdl-checkbox__input" />
 							</label>
 						</td>
-						<td class="mdl-data-table__cell--non-numeric" id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID'].'-title'; ?>"><?php echo $message['MessageTitle']; ?></td>
+						<td class="mdl-data-table__cell--non-numeric data-table__cell-overflow-ellipsis" id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID'].'-title'; ?>"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
 					</tr>
