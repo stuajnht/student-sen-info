@@ -28,7 +28,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/js/jquery.animsition.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/simplemodal/1.4.4/jquery.simplemodal.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script>new WOW().init();</script>
+<script>new WOW({offset:-100}).init();</script>
 <script>
 	$(document).ready(function(){
 		// Controlling the search form being shown
