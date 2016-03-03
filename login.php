@@ -75,7 +75,7 @@ if (isset($_POST['cookie'])) {
 		<span id="login-message">Please log in to access the SEN information</span>
 		<form action="#">
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				<input class="mdl-textfield__input" type="text" id="username" />
+				<input class="mdl-textfield__input" type="text" id="username" autocomplete="off" />
 				<label class="mdl-textfield__label" for="username">Username</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

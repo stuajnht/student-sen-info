@@ -256,7 +256,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
-				<input class="mdl-textfield__input" type="text" id="modal-title" />
+				<input class="mdl-textfield__input" type="text" id="modal-title" autocomplete="off" />
 				<label class="mdl-textfield__label" for="modal-title">Title</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">

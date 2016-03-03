@@ -35,7 +35,7 @@
 		<div class="mdl-card__supporting-text">
 			<form action="#">
 				<span class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-textfield">
-					<input class="mdl-textfield__input" type="text" id="search--search-box" />
+					<input class="mdl-textfield__input" type="text" id="search--search-box" autocomplete="off" />
 					<label class="mdl-textfield__label" for="search--search-box">Search for person</label>
 				</span>
 				<span class="mdl-spinner mdl-js-spinner" id="search--loading-spinner"></span>
@@ -53,11 +53,11 @@
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="modal-add-forename-div">
-				<input class="mdl-textfield__input" type="text" id="modal-add-forename" />
+				<input class="mdl-textfield__input" type="text" id="modal-add-forename" autocomplete="off" />
 				<label class="mdl-textfield__label" for="modal-title">Forename</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="modal-add-surname-div">
-				<input class="mdl-textfield__input" type="text" id="modal-add-surname" />
+				<input class="mdl-textfield__input" type="text" id="modal-add-surname" autocomplete="off" />
 				<label class="mdl-textfield__label" for="modal-title">Surname</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label modal-textfield">
