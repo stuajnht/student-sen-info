@@ -231,6 +231,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 						<td class="mdl-data-table__cell--non-numeric data-table__cell-overflow-ellipsis" id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID'].'-title'; ?>"><?php echo $message['MessageTitle']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($staffMember[0]['StaffForename'], 0, 1) . ". " . $staffMember[0]['StaffSurname']; ?></td>
 						<td class="mdl-data-table__cell--non-numeric"><?php echo substr($message['MessageDate'], 0, 10); ?></td>
+						<td class="mdl-data-table__cell--non-numeric" style="display: none;" id="<?php echo 'panel_'.$panel['PanelID'].'-message_'.$message['MessageID'].'-message-id'; ?>"><?php echo $message['MessageID']; ?></td>
 					</tr>
 					<?php
 					// End of messages foreach and if statements
@@ -269,6 +270,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			<input type="hidden" name="modal-student-id" id="modal-student-id" value="<?php echo getMeta("studentID", $studentMetaInformation); ?>">
 			<input type="hidden" name="modal-panel-id" id="modal-panel-id" value="">
 			<input type="hidden" name="modal-panel-id" id="modal-panel-menu-id" value="">
+			<input type="hidden" name="modal-message-id" id="modal-message-id" value="">
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
@@ -305,6 +307,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				$( "#modal-box--title-text" ).text($(this).find("[id$=title]").html());
 				$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 				$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
+				$( "#modal-message-id" ).val($(this).find("[id$=message-id]").html());
 				$( '#modal-message' ).attr('rows', 4);
 				$( '#modal-textfield--title' ).hide();
 				$( '#modal-textfield--comments' ).show();
