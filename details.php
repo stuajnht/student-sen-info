@@ -314,6 +314,16 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				$( '#modal-textfield--comments' ).html('<span class="mdl-spinner mdl-js-spinner is-active" id="modal--loading-spinner"></span>');
 				componentHandler.upgradeDom();
 				$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+				
+				// Loading the message thread
+				var viewThread<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = $.post( 'details-view.php', { cookie: $.cookie("sessionID"), messageID: $('#modal-message-id').val() } );
+				
+				// Updating the message modal thread
+				viewThread<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?>.done(function( data ) {
+					$('#modal-textfield--comments').html(data);
+					// Updating the DOM so that all MDL elements get updated
+					componentHandler.upgradeDom();
+				});
 			});
 		});
 		var complete_<?php echo strtolower(str_replace(" ", "_", $panelValues['panelTitle'])); ?> = '';
