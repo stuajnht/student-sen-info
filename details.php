@@ -308,6 +308,8 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				$( '#modal-message' ).attr('rows', 4);
 				$( '#modal-textfield--title' ).hide();
 				$( '#modal-textfield--comments' ).show();
+				$( '#modal-textfield--comments' ).html('<span class="mdl-spinner mdl-js-spinner is-active" id="search--loading-spinner"></span>');
+				componentHandler.upgradeDom();
 				$( "#modal-box--modal" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
 			});
 		});
