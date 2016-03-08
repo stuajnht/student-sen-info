@@ -73,6 +73,11 @@ textarea {
 .modal-textfield {
 	width: 100%;
 }
+.modal--comment_thread--comment-div {
+	border-bottom: 1px dotted #424242;
+	padding-bottom: 22px;
+	padding-top: 10px;
+}
 
 /* Details Page Card Tables */
 .supporting-text-table-container {

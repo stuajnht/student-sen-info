@@ -70,7 +70,7 @@ if (dbSelectCountRows($queryResultMessageThread) > 0) {
 		// Creating the comment thread HTML code, to pass back to the AJAX call
 		$commentThreadHtml .= '<div class="modal--comment_thread--comment-div" id="modal--comment_thread--comment-id_'.$comment['CommentID'].'">';
 		$commentThreadHtml .= '<p class="modal--comment_thread--comment-text">'.nl2br($comment['Comment']).'</p>';
-		$commentThreadHtml .= '<span class="modal--comment_thread--comment-meta">'.$staffFullName.' &mdash; '.substr($comment['CommentDate'], 0, 10).'</span>';
+		$commentThreadHtml .= '<span class="modal--comment_thread--comment-meta pull-right">'.$staffFullName.' &mdash; '.substr($comment['CommentDate'], 0, 10).'</span>';
 		$commentThreadHtml .= '</div>';
 	}
 	
