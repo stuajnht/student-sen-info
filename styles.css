@@ -80,7 +80,7 @@ textarea {
 }
 #modal-textfield--comments {
 	max-height: 400px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 /* Details Page Card Tables */
