@@ -98,6 +98,7 @@ if ($newMessage) {
 	echo '<td class="mdl-data-table__cell--non-numeric data-table__cell-overflow-ellipsis" id="panel_'.$panelID.'-message_'.$messageThreadID.'-title">'.$messageTitle.'</td>';
 	echo '<td class="mdl-data-table__cell--non-numeric">'.substr($staffForename, 0, 1) . ". " . $staffSurname .'</td>';
 	echo '<td class="mdl-data-table__cell--non-numeric">'.substr($messagePosted, 0, 10) .'</td>';
+	echo '<td class="mdl-data-table__cell--non-numeric" style="display: none;" id="panel_'.$panelID.'-message_'.$messageThreadID.'-message-id">'.$messageThreadID.'</td>';
 	echo '</tr>';
 } else {
 	echo 'comment-added';
