@@ -295,6 +295,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 			$( "#modal-box--title-text" ).text("Add <?php echo $panelValues['panelTitle']; ?>");
 			$( "#modal-panel-id" ).val("<?php echo $panelValues['panelID']; ?>");
 			$( "#modal-panel-menu-id" ).val("<?php echo strtolower(str_replace(" ", "-", $panelValues['panelMenuID'])); ?>");
+			$( "#modal-message-id" ).val("new");
 			$( '#modal-message' ).attr('rows', 10);
 			$( '#modal-textfield--title' ).show();
 			$( '#modal-textfield--comments' ).hide();
@@ -403,24 +404,28 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	}).change();
 	$( "#modal-box--button-save" ).click(function() {
 		// Posting the new message about the student
-		var addNewMessage = $.post( 'details-add.php', { cookie: $.cookie("sessionID"), title: $('#modal-title').val(), message: $('#modal-message').val(), studentID: $('#modal-student-id').val(), panelID: $('#modal-panel-id').val() } );
+		var addNewMessage = $.post( 'details-add.php', { cookie: $.cookie("sessionID"), title: $('#modal-title').val(), message: $('#modal-message').val(), studentID: $('#modal-student-id').val(), panelID: $('#modal-panel-id').val(), messageThreadID: $('#modal-message-id').val() } );
 		
 		// Updating the relevant tables with the new message
 		addNewMessage.done(function( data ) {
-			// Adding the new row to the top of the table. The HTML has been generated
-			// by the details-add.php file
-			$(data).prependTo("#table--"+ $('#modal-panel-menu-id').val() +" > tbody");
-			
-			// Allowing the newly added table row and checkbox to toggle
-			// the is-selected class of the row
-			$( ".mdl-checkbox__input" ).change(function() {
-				var $input = $( this );
-				if ($input.is( ":checked" )) {
-					$(this).parents("tr").addClass("is-selected");
-				} else {
-					$(this).parents("tr").removeClass("is-selected");
-				}
-			}).change();
+			// Only adding a new table row if a new message was created,
+			// and not a comment added
+			if (data != 'comment-added') {
+				// Adding the new row to the top of the table. The HTML has been generated
+				// by the details-add.php file
+				$(data).prependTo("#table--"+ $('#modal-panel-menu-id').val() +" > tbody");
+
+				// Allowing the newly added table row and checkbox to toggle
+				// the is-selected class of the row
+				$( ".mdl-checkbox__input" ).change(function() {
+					var $input = $( this );
+					if ($input.is( ":checked" )) {
+						$(this).parents("tr").addClass("is-selected");
+					} else {
+						$(this).parents("tr").removeClass("is-selected");
+					}
+				}).change();
+			}
 			
 			// Clearing the modal title and message fields
 			$('#modal-title').val('');
