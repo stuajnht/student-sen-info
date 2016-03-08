@@ -79,6 +79,7 @@ textarea {
 	padding-top: 10px;
 }
 #modal-textfield--comments {
+	min-height: 50px;
 	max-height: 400px;
 	overflow-y: auto;
 }
