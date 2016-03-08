@@ -78,6 +78,10 @@ textarea {
 	padding-bottom: 22px;
 	padding-top: 10px;
 }
+#modal-textfield--comments {
+	max-height: 400px;
+	overflow-y: scroll;
+}
 
 /* Details Page Card Tables */
 .supporting-text-table-container {
