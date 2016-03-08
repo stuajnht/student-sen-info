@@ -74,6 +74,15 @@ if (dbSelectCountRows($queryResultMessageThread) > 0) {
 		$commentThreadHtml .= '</div>';
 	}
 	
+	// Scrolling the user to the bottom of the message thread,
+	// as they'll probably want the newest messages first
+	// See: http://stackoverflow.com/a/22232328
+	$commentThreadHtml .= '<script>';
+	$commentThreadHtml .= '$(function () {';
+  $commentThreadHtml .= '  $("#modal-textfield--comments").scrollTop(1E10);';
+	$commentThreadHtml .= '});';
+	$commentThreadHtml .= '</script>';
+	
 	// Returning the generate comment thread
 	echo $commentThreadHtml;
 }
