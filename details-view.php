@@ -54,18 +54,28 @@ $sqlMessageThread = "SELECT * FROM `sen_info`.`tbl_comments` WHERE (MessageID = 
 $queryResultMessageThread = dbSelect($sqlMessageThread, $databaseConnection);
 
 if (dbSelectCountRows($queryResultMessageThread) > 0) {
-	foreach (dbSelectGetRows($queryResultMessageThread) as $message) {
+	// Saving the results of the comment thread to a variable,
+	// which is returned once the comment thread has been created
+	$commentThreadHtml = '';
+	
+	foreach (dbSelectGetRows($queryResultMessageThread) as $comment) {
 		// Getting the name of the staff member who wrote the comment
-		$sqlStaffFullName = "SELECT StaffForename, StaffSurname FROM `sen_info`.`tbl_staff` WHERE (StaffUsername = '".$message['StaffUsername']."')";
+		$sqlStaffFullName = "SELECT StaffForename, StaffSurname FROM `sen_info`.`tbl_staff` WHERE (StaffUsername = '".$comment['StaffUsername']."')";
 		$queryResultStaffFullname = dbSelect($sqlStaffFullName, $databaseConnection);
 		$tableRows = dbSelectGetRows($queryResultStaffFullname);
 		$staffForename = $tableRows[0]['StaffForename'];
 		$staffSurname = $tableRows[0]['StaffSurname'];
 		$staffFullName = $staffForename . " " . $staffSurname;
 		
-		// Creating the message thread HTML code, to pass back to the AJAX call
-		echo '';
+		// Creating the comment thread HTML code, to pass back to the AJAX call
+		$commentThreadHtml .= '<div class="modal--comment_thread--comment-div" id="modal--comment_thread--comment-id_'.$comment['CommentID'].'">';
+		$commentThreadHtml .= '<p class="modal--comment_thread--comment-text">'.nl2br($comment['Comment']).'</p>';
+		$commentThreadHtml .= '<span class="modal--comment_thread--comment-meta">'.$staffFullName.' &mdash; '.substr($comment['CommentDate'], 0, 10).'</span>';
+		$commentThreadHtml .= '</div>';
 	}
+	
+	// Returning the generate comment thread
+	echo $commentThreadHtml;
 }
 
 // Closing the connection to the database
