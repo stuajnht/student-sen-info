@@ -83,6 +83,20 @@ if (dbSelectCountRows($queryResultMessageThread) > 0) {
 	$commentThreadHtml .= '});';
 	$commentThreadHtml .= '</script>';
 	
+	// Recentering the modal div vertically, as AJAX loading
+	// doesn't seem to do this properly. While not ideal, it
+	// keeps the modal buttons above the bottom of the page
+	// See: http://stackoverflow.com/a/13903655
+	$commentThreadHtml .= '<script>';
+	$commentThreadHtml .= "$(function() {";
+	$commentThreadHtml .= "  $('.modal-box').css({";
+	$commentThreadHtml .= "      'position' : 'absolute',";
+	$commentThreadHtml .= "      'top' : '50%',";
+	$commentThreadHtml .= "      'margin-top' : function() {return -$(this).outerHeight()/2}";
+	$commentThreadHtml .= "  });";
+	$commentThreadHtml .= "});";
+	$commentThreadHtml .= '</script>';
+	
 	// Returning the generate comment thread
 	echo $commentThreadHtml;
 }
