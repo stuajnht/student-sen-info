@@ -203,9 +203,9 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 								<input type="checkbox" id="table-header--<?php echo strtolower(str_replace(" ", "-", $panel['PanelTitle'])); ?>" class="mdl-checkbox__input" />
 							</label>
 						</th>
-						<th class="mdl-data-table__cell--non-numeric">Title</th>
-						<th class="mdl-data-table__cell--non-numeric">Staff</th>
-						<th class="mdl-data-table__cell--non-numeric">Date</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__cell--width-60">Title</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__cell--width-15">Staff</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__cell--width-15">Date</th>
 					</tr>
 				</thead>
 				<tbody>

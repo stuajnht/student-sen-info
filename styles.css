@@ -96,6 +96,7 @@ textarea {
 .supporting-text-table {
 	width: 100%;
 	white-space: normal;
+	table-layout: fixed;
 }
 .mdl-data-table td,
 .mdl-data-table__cell--non-numeric.mdl-data-table__cell--non-numeric {
@@ -116,6 +117,17 @@ textarea {
 }
 .data-table__cell-overflow-ellipsis {
 	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+th {
+	width: 10%;
+}
+.mdl-data-table__cell--width-60 {
+	width: 60%;
+}
+.mdl-data-table__cell--width-15 {
+	width: 15%;
 }
 
 
