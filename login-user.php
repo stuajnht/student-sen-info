@@ -88,9 +88,11 @@ function setSessionInformation($username, $databaseConnection) {
  * @param string $ldapServer A reference to the config.php LDAP server address
  * @param string $ldapUPN A reference to the config.php LDAP UPN
  * @param string $ldapDN A reference to the config.php LDAP DN
+ * @param array $allowedStaffGroups An array of group names that an allowed staff user should be in
+ * @param object $databaseConnection The connection to the database
  * @param bool $createUser If the username can't be found in the database, should an account be created if sucessful login
  */
-function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $createUser = false) {
+function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $allowedStaffGroups, $databaseConnection, $createUser = false) {
 	$adServer = "ldap://" . $ldapServer;
 	
 	$ldapConnection = ldap_connect($adServer) or die("Could not connect to $ldapServer");
@@ -110,14 +112,28 @@ function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $create
 		ldap_sort($ldapConnection, $result,"sn");
 		$info = ldap_get_entries($ldapConnection, $result);
 		
-		for ($i=0; $i<$info["count"]; $i++) {
-			if($info['count'] > 1) break;
-			
-			echo "<p>You are accessing <strong> ". $info[$i]["sn"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["samaccountname"][0] .")</p>\n";
-			echo '<pre>';
-			var_dump($info);
-			echo '</pre>';
-			$userDn = $info[$i]["distinguishedname"][0]; 
+		// Listing all of the data returned, if needed
+		// for any debugging. Commented out by default
+		//var_dump($info);
+		
+		// Checking to see if the user is part of any authorised staff groups
+		$allowedStaffUser = false;
+		
+		foreach($allowedStaffGroups as $allowedStaffGroup) {
+			foreach($info[0]['memberof'] as $groups) {
+			// Is allowed staff user, break loop
+			if(strpos($groups, $allowedStaffGroup)) { $allowedStaffUser = true; break; }
+			}
+		}
+		
+		// Seeing if the user has been given access to log in
+		if ($allowedStaffUser) {
+			// Letting the calling AJAX script know the user has been
+			// logged in
+			setSessionInformation($username, $databaseConnection);
+			echo 'success';
+		} else {
+			echo 'The user is not a member of staff';
 		}
 	} else {
 		// There was a problem of some sort when attempting to
@@ -179,7 +195,7 @@ if (isset($_POST['cookie'])) {
 			// to a LDAP server, or just against what is stored in the
 			// staff database table
 			if (($CFG['LDAP_Enabled']) && ($tableRows[0]['StaffPassword'] == "ldap")) {
-				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], false);
+				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], $CFG['LDAP_StaffGroups'], $databaseConnection, false);
 			} else {
 				if (password_verify($password, $tableRows[0]['StaffPassword'])) {
 					// Updating the sessions table and cookie
@@ -194,7 +210,7 @@ if (isset($_POST['cookie'])) {
 			// the new user from a successful LDAP bind, or if it's not
 			// enabled, let the user know that the username is incorrect
 			if ($CFG['LDAP_Enabled']) {
-				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], true);
+				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], $CFG['LDAP_StaffGroups'], $databaseConnection, true);
 			} else {
 				echo "The username is incorrect";
 			}
