@@ -53,7 +53,7 @@ require('./functions.php');
  */
 function setSessionInformation($username, $databaseConnection) {
 	// Creating a unique session ID and expiration date
-	$sessionID = bin2hex(uniqid('', true));
+	$sessionID = bin2hex(openssl_random_pseudo_bytes(32));
 	$expires = time()+60*60*24;
 	
 	// Converting the expires time into a MySQL datetime format
