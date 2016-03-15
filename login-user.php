@@ -128,6 +128,18 @@ function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $allowe
 		
 		// Seeing if the user has been given access to log in
 		if ($allowedStaffUser) {
+			// Creating the user account if the staff member is logging
+			// on to this site for the first time
+			if ($createUser) {
+				// Sanitising the input, as it's unknown what may be in LDAP
+				$forename = $databaseConnection->real_escape_string($info[0]['givenname'][0]);
+				$surname = $databaseConnection->real_escape_string($info[0]['sn'][0]);
+				
+				// Adding the staff member to the database
+				$sql = "INSERT INTO `sen_info`.`tbl_staff` (`StaffUsername`, `StaffForename`, `StaffSurname`, `StaffPassword`) VALUES ('$username', '$forename', '$surname', 'ldap');";
+				$insertResult = dbInsert($sql, $databaseConnection);
+			}
+			
 			// Letting the calling AJAX script know the user has been
 			// logged in
 			setSessionInformation($username, $databaseConnection);
