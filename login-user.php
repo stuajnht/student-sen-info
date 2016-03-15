@@ -91,38 +91,42 @@ function setSessionInformation($username, $databaseConnection) {
  * @param bool $createUser If the username can't be found in the database, should an account be created if sucessful login
  */
 function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $createUser = false) {
-	  $adServer = "ldap://" . $ldapServer;
+	$adServer = "ldap://" . $ldapServer;
 	
-    $ldap = ldap_connect($adServer);
-
-    $ldaprdn = $username . '@' . $ldapUPN;
-
-    ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
-
-    $bind = @ldap_bind($ldap, $ldaprdn, $password);
-
-
-    if ($bind) {
-        $filter="(sAMAccountName=$username)";
-        $result = ldap_search($ldap, $ldapDN, $filter);
-        ldap_sort($ldap,$result,"sn");
-        $info = ldap_get_entries($ldap, $result);
-        for ($i=0; $i<$info["count"]; $i++)
-        {
-            if($info['count'] > 1)
-                break;
-            echo "<p>You are accessing <strong> ". $info[$i]["sn"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["samaccountname"][0] .")</p>\n";
-            echo '<pre>';
-            var_dump($info);
-            echo '</pre>';
-            $userDn = $info[$i]["distinguishedname"][0]; 
-        }
-        @ldap_close($ldap);
-    } else {
-        $msg = "Invalid email address / password";
-        echo $msg;
-    }
+	$ldapConnection = ldap_connect($adServer) or die("Could not connect to $ldapServer");
+	
+	$ldaprdn = $username . '@' . $ldapUPN;
+	
+	ldap_set_option($ldapConnection, LDAP_OPT_PROTOCOL_VERSION, 3);
+	ldap_set_option($ldapConnection, LDAP_OPT_REFERRALS, 0);
+	
+	$bind = @ldap_bind($ldapConnection, $ldaprdn, $password);
+	
+	if ($bind) {
+		// Searching to find the current username, to check the
+		// groups they are part of
+		$filter = "(sAMAccountName=$username)";
+		$result = ldap_search($ldapConnection, $ldapDN, $filter);
+		ldap_sort($ldapConnection, $result,"sn");
+		$info = ldap_get_entries($ldapConnection, $result);
+		
+		for ($i=0; $i<$info["count"]; $i++) {
+			if($info['count'] > 1) break;
+			
+			echo "<p>You are accessing <strong> ". $info[$i]["sn"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["samaccountname"][0] .")</p>\n";
+			echo '<pre>';
+			var_dump($info);
+			echo '</pre>';
+			$userDn = $info[$i]["distinguishedname"][0]; 
+		}
+	} else {
+		// There was a problem of some sort when attempting to
+		// bind with the LDAP server, so print the error message
+		echo ldap_error( $ldapConnection );
+	}
+	
+	// Closing any open connections to the LDAP server
+	@ldap_close($ldap);
 }
 
 // Connecting to the database and saving the connection to it for use later
