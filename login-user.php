@@ -71,6 +71,60 @@ function setSessionInformation($username, $databaseConnection) {
 	return $sessionID;
 }
 
+/**
+ * Attempts to log the user in using their LDAP user account
+ * instead of the password stored in the database
+ *
+ * If a user hasn't logged into the site before, then attempt
+ * to log them in, then create a record for them in the database
+ * so that it can be checked again in the future
+ *
+ * See: https://merchantprotocol.com/3564/user-login-using-ldap-and-php/
+ * See: https://samjlevy.com/php-login-script-using-ldap-verify-group-membership/
+ * See: https://www.exchangecore.com/blog/how-use-ldap-active-directory-authentication-php/
+ *
+ * @param string $username The username of the user to try logging on with
+ * @param string $password The password of the above named user
+ * @param string $ldapServer A reference to the config.php LDAP server address
+ * @param string $ldapUPN A reference to the config.php LDAP UPN
+ * @param string $ldapDN A reference to the config.php LDAP DN
+ * @param bool $createUser If the username can't be found in the database, should an account be created if sucessful login
+ */
+function ldapLogin($username, $password, $ldapServer, $ldapUPN, $ldapDN, $createUser = false) {
+	  $adServer = "ldap://" . $ldapServer;
+	
+    $ldap = ldap_connect($adServer);
+
+    $ldaprdn = $username . '@' . $ldapUPN;
+
+    ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+    ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+
+    $bind = @ldap_bind($ldap, $ldaprdn, $password);
+
+
+    if ($bind) {
+        $filter="(sAMAccountName=$username)";
+        $result = ldap_search($ldap, $ldapDN, $filter);
+        ldap_sort($ldap,$result,"sn");
+        $info = ldap_get_entries($ldap, $result);
+        for ($i=0; $i<$info["count"]; $i++)
+        {
+            if($info['count'] > 1)
+                break;
+            echo "<p>You are accessing <strong> ". $info[$i]["sn"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["samaccountname"][0] .")</p>\n";
+            echo '<pre>';
+            var_dump($info);
+            echo '</pre>';
+            $userDn = $info[$i]["distinguishedname"][0]; 
+        }
+        @ldap_close($ldap);
+    } else {
+        $msg = "Invalid email address / password";
+        echo $msg;
+    }
+}
+
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
@@ -126,6 +180,7 @@ if (isset($_POST['cookie'])) {
 			}
 		} else {
 			// The username doesn't exist, so let the user know
+			ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], false);
 			echo "The username is incorrect";
 		}
 	} else {

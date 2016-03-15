@@ -32,4 +32,11 @@ $CFG['DBPort'] = '';
 $CFG['DBUser'] = '';
 $CFG['DBPass'] = '';
 $CFG['DBName'] = '';
+
+// LDAP server logon information
+$CFG['LDAP_Enabled'] = false;
+$CFG['LDAP_Server'] = 'dc.example.com';
+$CFG['LDAP_UPN'] = 'example.com';
+$CFG['LDAP_DN'] = 'DC=example,DC=com';
+$CFG['LDAP_StaffGroups'] = ['All Staff', 'Staff Full Access'];
 ?>
