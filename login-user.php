@@ -171,17 +171,29 @@ if (isset($_POST['cookie'])) {
 			// Checking to see if the password typed matches what is in the database
 			$tableRows = dbSelectGetRows($queryResult);
 			
-			if (password_verify($password, $tableRows[0]['StaffPassword'])) {
-				// Updating the sessions table and cookie
-				setSessionInformation($username, $databaseConnection);
-				echo 'success';
+			// Seeing if we should try logging the user in with a request
+			// to a LDAP server, or just against what is stored in the
+			// staff database table
+			if (($CFG['LDAP_Enabled']) && ($tableRows[0]['StaffPassword'] == "ldap")) {
+				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], false);
 			} else {
-				echo 'The password is incorrect';
+				if (password_verify($password, $tableRows[0]['StaffPassword'])) {
+					// Updating the sessions table and cookie
+					setSessionInformation($username, $databaseConnection);
+					echo 'success';
+				} else {
+					echo 'The password is incorrect';
+				}
 			}
 		} else {
-			// The username doesn't exist, so let the user know
-			ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], false);
-			echo "The username is incorrect";
+			// The username doesn't exist, so either attempt to create
+			// the new user from a successful LDAP bind, or if it's not
+			// enabled, let the user know that the username is incorrect
+			if ($CFG['LDAP_Enabled']) {
+				ldapLogin($username, $password, $CFG['LDAP_Server'], $CFG['LDAP_UPN'], $CFG['LDAP_DN'], true);
+			} else {
+				echo "The username is incorrect";
+			}
 		}
 	} else {
 		// There was no username and/or password entered, so let the user know
