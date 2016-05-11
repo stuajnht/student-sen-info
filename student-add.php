@@ -58,8 +58,15 @@ if (isset($_POST['forename'], $_POST['surname']) &&
 	
 	$insertStatement->execute();
 	
+	// Getting the ID of the student
+	$studentID = $insertStatement->insert_id;
+	
+	// Updating the meta table with the new student
+	$sqlStudentMeta = "INSERT INTO `sen_info`.`tbl_student_meta` (`StudentID`, `YearGroup`, `House`, `Form`, `DoB`) VALUES ($studentID, '-', '-', '-', '')";
+	$insertStudentMeta = dbInsert($sqlStudentMeta, $databaseConnection);
+	
 	// Returning the ID of the student
-	echo $insertStatement->insert_id;
+	echo $studentID;
 } else {
 	// There was nothing sent in the POST request, so return -1
 	echo "-1";
