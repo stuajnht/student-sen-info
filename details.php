@@ -256,7 +256,19 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	</div>
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
-			
+			Year Group: 
+			<select id="modal-studentYearGroup">
+				<option value="-">-</option>
+				<?php
+					for ($yearNumber = 7; $yearNumber <= 13; $yearNumber++) {
+						echo "<option value=\"$yearNumber\"";
+						if (getMeta("yearGroup", $studentMetaInformation) == $yearNumber) {
+							echo " selected";
+						}
+						echo ">$yearNumber</option>";
+					}
+				?>
+			</select>
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
