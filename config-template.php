@@ -39,4 +39,10 @@ $CFG['LDAP_Server'] = 'dc.example.com';
 $CFG['LDAP_UPN'] = 'example.com';
 $CFG['LDAP_DN'] = 'DC=example,DC=com';
 $CFG['LDAP_StaffGroups'] = ['All Staff', 'Staff Full Access'];
+
+// Student meta details (year group ranges, forms, houses)
+$CFG['StudentMeta_YearGroupStart'] = 7;
+$CFG['StudentMeta_YearGroupEnd'] = 11;
+$CFG['StudentMeta_Houses'] = ['Purple', 'Red', 'Green', 'Yellow'];
+$CFG['StudentMeta_Forms'] = ['Purple', 'Red', 'Green', 'Yellow'];
 ?>
