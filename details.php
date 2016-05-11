@@ -127,7 +127,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				<i class="material-icons">more_vert</i>
 			</button>
 			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-student-details">
-				<li class="mdl-menu__item"><i class="material-icons">edit</i> Edit</li>
+				<li class="mdl-menu__item" id="student-meta--edit"><i class="material-icons">edit</i> Edit</li>
 				<li class="mdl-menu__item"><i class="material-icons">delete</i> Delete</li>
 			</ul>
 		</div>
@@ -247,6 +247,26 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 		}
 	}
 	?>
+</div>
+
+<!-- Modal Box - Edit Student Meta -->
+<div class="mdl-card mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 modal-box wow fadeIn" id="modal-box--modal-student-meta" data-wow-duration="0.5s">
+	<div class="mdl-card__title mdl-color--accent  mdl-color-text--white" id="modal-box-student-meta--title-div">
+		<h2 class="mdl-card__title-text" id="modal-box-student-meta--title-text">Edit Student Details</h2>
+	</div>
+	<div class="mdl-card__supporting-text modal-supporting-text">
+		<form action="#">
+			
+		</form>
+	</div>
+	<div class="mdl-card__actions mdl-card--border">
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent  mdl-color-text--white" id="modal-box-student-meta--button-save">
+			Save
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect pull-right" id="modal-box-student-meta--buton-close">
+			Cancel
+		</button>
+	</div>
 </div>
 
 <!-- Modal Box -->
@@ -443,5 +463,11 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 		$.modal.close();
 		$( "#modal-box--title-div" ).removeClass("colour--purple-200 colour--light-green-200 colour--orange-200 colour--red-200 mdl-color-text--white mdl-color-text--grey-800");
 		$( "#modal-box--button-save" ).removeClass("colour--purple-400 colour--light-green-400 colour--orange-400 colour--red-400");
+	});
+	$( "#student-meta--edit" ).click(function() {
+		$( "#modal-box--modal-student-meta" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-box-student-meta--buton-close" ).click(function() {
+		$.modal.close();
 	});
 </script>
