@@ -44,9 +44,20 @@ require('./functions.php');
 // Connecting to the database and saving the connection to it for use later
 $databaseConnection = dbConnect($CFG['DBHost'], $CFG['DBUser'], $CFG['DBPass'], $CFG['DBName']);
 
-// Getting the message ID's passed. If there isn't anything, then we can just
+// Getting the session ID passed. If there isn't anything, then we can just
 // return 'empty'
 if (isset($_POST['cookie'])) {
+	// Sanitising the query
+	$studentID = $databaseConnection->real_escape_string($_POST['studentID']);
+	$yearGroup = $databaseConnection->real_escape_string($_POST['yearGroup']);
+	$house = $databaseConnection->real_escape_string($_POST['house']);
+	$form = $databaseConnection->real_escape_string($_POST['form']);
+	$dob = $databaseConnection->real_escape_string($_POST['dob']);
+	
+	// Generating the update SQL query
+	$sql = "UPDATE `sen_info`.`tbl_student_meta` SET `YearGroup`='$yearGroup', `House`='$house', `Form`='$form', `DoB`='$dob' WHERE  `StudentID`=" . $studentID;
+	$updateResult = dbUpdate($sql, $databaseConnection);
+	
 	// Sending back 'success' so that the calling function knows that it has completed
 	echo 'success';
 } else {
