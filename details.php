@@ -257,7 +257,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	<div class="mdl-card__supporting-text modal-supporting-text">
 		<form action="#">
 			Year Group: 
-			<select id="modal-studentYearGroup">
+			<select class="modal-student-meta--select" id="modal-studentYearGroup">
 				<option value="-">-</option>
 				<?php
 					for ($yearNumber = $CFG['StudentMeta_YearGroupStart']; $yearNumber <= $CFG['StudentMeta_YearGroupEnd']; $yearNumber++) {
@@ -268,9 +268,9 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 						echo ">$yearNumber</option>";
 					}
 				?>
-			</select><br>
+			</select>
 			House: 
-			<select id="modal-studentHouse">
+			<select class="modal-student-meta--select" id="modal-studentHouse">
 				<option value="-">-</option>
 				<?php
 					foreach ($CFG['StudentMeta_Houses'] as $house) {
@@ -281,9 +281,9 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 						echo ">$house</option>";
 					}
 				?>
-			</select><br>
+			</select>
 			Form: 
-			<select id="modal-studentForm">
+			<select class="modal-student-meta--select" id="modal-studentForm">
 				<option value="-">-</option>
 				<?php
 					foreach ($CFG['StudentMeta_Forms'] as $form) {
@@ -294,7 +294,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 						echo ">$form</option>";
 					}
 				?>
-			</select><br>
+			</select>
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">

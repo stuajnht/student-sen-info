@@ -83,6 +83,11 @@ textarea {
 	max-height: 400px;
 	overflow-y: auto;
 }
+.modal-student-meta--select {
+	margin-bottom: 25px;
+	margin-right: 30px;
+	margin-top: 10px;
+}
 
 /* Details Page Card Tables */
 .supporting-text-table-container {
