@@ -134,16 +134,16 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 		<div class="mdl-card__supporting-text">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--3-col">
-					Year Group: <?php echo getMeta("yearGroup", $studentMetaInformation); ?>
+					Year Group: <span class="panel-meta--data" id="panel-meta--year-group"><?php echo getMeta("yearGroup", $studentMetaInformation); ?></span>
 				</div>
 				<div class="mdl-cell mdl-cell--3-col">
-					House: <?php echo getMeta("house", $studentMetaInformation); ?>
+					House: <span class="panel-meta--data" id="panel-meta--house"><?php echo getMeta("house", $studentMetaInformation); ?></span>
 				</div>
 				<div class="mdl-cell mdl-cell--3-col">
-					Form: <?php echo getMeta("form", $studentMetaInformation); ?>
+					Form: <span class="panel-meta--data" id="panel-meta--form"><?php echo getMeta("form", $studentMetaInformation); ?></span>
 				</div>
 				<div class="mdl-cell mdl-cell--3-col">
-					Date of Birth: <?php echo getMeta("dob", $studentMetaInformation); ?>
+					Date of Birth: <span class="panel-meta--data" id="panel-meta--dob"><?php echo getMeta("dob", $studentMetaInformation); ?></span>
 				</div>
 			</div>
 		</div>
@@ -299,6 +299,7 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 				<input class="mdl-textfield__input" type="text" id="modal-studentDoB" autocomplete="off" value="<?php echo getMeta("dob", $studentMetaInformation); ?>" />
 				<label class="mdl-textfield__label" for="modal-title">Date of Birth (DD/MM/YYYY)</label>
 			</span>
+			<input type="hidden" name="modal-student-meta-id" id="modal-student-meta-id" value="<?php echo getMeta("studentID", $studentMetaInformation); ?>">
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
@@ -508,6 +509,29 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 	});
 	$( "#student-meta--edit" ).click(function() {
 		$( "#modal-box--modal-student-meta" ).modal({persist:true,opacity:60,overlayCss: {backgroundColor:"#000"}});
+	});
+	$( "#modal-box-student-meta--button-save" ).click(function() {
+		// Saving the values from the modal to post them, and also to
+		// use them to update the meta panel
+		var metaYearGroup = $('#modal-studentYearGroup').val();
+		var metaHouse = $('#modal-studentHouse').val();
+		var metaForm = $('#modal-studentForm').val();
+		var metaDoB = $('#modal-studentDoB').val();
+		
+		// Posting the updated data about the student
+		var editStudent = $.post( 'student-edit.php', { cookie: $.cookie("sessionID"), studentID: $('#modal-student-meta-id').val(), yearGroup: metaYearGroup, house: metaHouse, form: metaForm, dob: metaDoB } );
+		
+		// Updating the relevant panel with the updated details
+		editStudent.done(function( data ) {
+			// Only updating the meta table if it has been posted successfully
+			$('#panel-meta--year-group').html(metaYearGroup);
+			$('#panel-meta--house').html(metaHouse);
+			$('#panel-meta--form').html(metaForm);
+			$('#panel-meta--dob').html(metaDoB);
+			
+			// Closing the modal
+			$.modal.close();
+		});
 	});
 	$( "#modal-box-student-meta--buton-close" ).click(function() {
 		$.modal.close();

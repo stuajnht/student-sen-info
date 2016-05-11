@@ -60,6 +60,11 @@ textarea {
 	overflow: hidden;
 }
 
+/* Meta panel */
+.panel-meta--data {
+	font-weight: bold;
+}
+
 /* Modal Box Settings */
 .modal-box {
 	display: none;
