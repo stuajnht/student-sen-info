@@ -295,6 +295,10 @@ $studentMetaInformation[] = setMeta($_POST['student'], $databaseConnection);
 					}
 				?>
 			</select>
+			<span class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="modal-textfield--student-dob">
+				<input class="mdl-textfield__input" type="text" id="modal-studentDoB" autocomplete="off" value="<?php echo getMeta("dob", $studentMetaInformation); ?>" />
+				<label class="mdl-textfield__label" for="modal-title">Date of Birth (DD/MM/YYYY)</label>
+			</span>
 		</form>
 	</div>
 	<div class="mdl-card__actions mdl-card--border">
